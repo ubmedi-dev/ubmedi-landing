@@ -38,14 +38,14 @@ const specialties = [
 ];
 
 const ubmediStrengths = [
-  "맞춤 병원 큐레이션",
-  "전 일정 통합 지원",
-  "실시간 통역",
-  "숙소·이동 관리",
-  "24시 고객 케어",
+  "공항 픽업·이동",
+  "의료 전문 통역",
+  "숙박·관광 연계",
+  "사후 관리",
+  "24시간 코디네이터",
 ];
 
-const genericSupport = ["병원 직접 탐색", "개별 예약", "일정 조율 부담", "이동 동선 분리", "상황별 대응 한계"];
+const genericSupport = ["개인 이동", "일반적인 통역", "의료 연계만 제공", "사후 관리 없음", "영업시간 내 한정"];
 
 const processSteps = [
   { icon: "/SVG/아트보드 2.svg", title: "상담 접수", text: "희망 진료, 일정, 체류 조건을 먼저 확인합니다." },
@@ -255,28 +255,38 @@ export default function Home() {
       </section>
 
       <section className="section comparison-section">
-        <div className="container narrow">
-          <div className="section-heading">
-            <h2>고객 여정에 필요한 요소만 모아 설계하는 방식</h2>
-            <p>UB MEDI는 병원 예약을 넘어 체류 전체를 운영 관점에서 묶습니다.</p>
+        <div className="container narrow comparison-wrap">
+          <div className="comparison-copy">
+            <p>20개 이상의 전문 진료과와 100여 가지 의료 시술을</p>
+            <p>UB MEDI를 통해 경험할 수 있습니다.</p>
           </div>
           <div className="comparison-grid">
             <div className="comparison-box is-primary">
-              <div className="comparison-title">UB MEDI</div>
-              {ubmediStrengths.map((item) => (
-                <div className="pill-row" key={item}>
-                  {item}
-                </div>
-              ))}
+              <div className="comparison-title is-primary-title">UB MEDI</div>
+              <div className="comparison-list">
+                {ubmediStrengths.map((item) => (
+                  <div className="pill-row" key={item}>
+                    <span className="pill-icon is-check" aria-hidden>
+                      ✓
+                    </span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="comparison-vs">VS</div>
-            <div className="comparison-box">
-              <div className="comparison-title">일반 접근</div>
-              {genericSupport.map((item) => (
-                <div className="pill-row is-muted" key={item}>
-                  {item}
-                </div>
-              ))}
+            <div className="comparison-box is-secondary">
+              <div className="comparison-title">일반 플랫폼</div>
+              <div className="comparison-list">
+                {genericSupport.map((item) => (
+                  <div className="pill-row is-muted" key={item}>
+                    <span className="pill-icon is-x" aria-hidden>
+                      ⨯
+                    </span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
