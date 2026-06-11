@@ -83,23 +83,23 @@ const processSteps = [
 const benefits = [
   {
     icon: "/SVG/아트보드 6.svg",
-    title: "상담부터 귀국까지 원스톱",
-    text: "검사 예약, 스케줄 조율, 현장 응대까지 하나의 창구로 운영합니다.",
+    title: "의료 전문 통역 동행",
+    text: "일반 통역이 아닌 의료 용어에 특화된 전담 통역사가 진료 현장에 직접 동행합니다.",
   },
   {
     icon: "/SVG/아트보드 7.svg",
-    title: "의료진 기준의 일정 설계",
-    text: "회복 시간과 이동 피로도를 고려해 체류 동선을 조정합니다.",
+    title: "외국인 진료 경험 병원 제휴",
+    text: "외국인 환자 진료 경험이 풍부하고 국제 의료 기준을 충족한 병원만 엄선해 연결합니다.",
   },
   {
     icon: "/SVG/아트보드 5.svg",
-    title: "카카오톡 기반 24시간 연결",
-    text: "응급 문의나 일정 변경이 생겨도 즉시 대응 가능한 채널을 둡니다.",
+    title: "전담 코디네이터 24시간 밀착",
+    text: "입국 전 상담부터 귀국 후 사후 관리까지 동일한 코디네이터가 고객을 끝까지 책임집니다.",
   },
   {
-    icon: "/SVG/대지 1.svg",
-    title: "한국 체류 특화 운영",
-    text: "입출국, 숙소, 공항 이동까지 메디컬 투어 관점에서 연결합니다.",
+    icon: "/SVG/아트보드 4.svg",
+    title: "맞춤 숙박 & 한국 관광",
+    text: "회복 기간을 고려한 숙박을 연계하고, 일정에 맞는 관광 프로그램까지 함께 제안합니다.",
   },
 ];
 
@@ -357,22 +357,30 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" id="benefits">
-        <div className="container">
-          <div className="section-heading">
+      <section className="section benefit-section" id="benefits">
+        <div className="container benefit-wrap">
+          <div className="benefit-heading">
             <h2>
               이 모든 여정을 가능하게 하는
               <br />
-              <span>UB MEDI의 차별점</span>
+              <span>UB MEDI만의 차별점</span>
             </h2>
           </div>
+
           <div className="care-visual">
             <Image src="/원스톱 케어.svg" alt="UB MEDI 원스톱 케어" width={582} height={576} />
           </div>
+
+          <div className="benefit-summary">
+            공항 픽업 · 병원 이동 · 전문 통역 · 회복 숙박 · 사후 관리까지
+            <br />
+            외국인 환자가 한국에서 겪는 모든 불편을 단 하나의 플랫폼에서 해결합니다.
+          </div>
+
           <div className="benefit-grid">
             {benefits.map((item) => (
               <article className="benefit-item" key={item.title}>
-                <Image src={item.icon} alt="" width={28} height={28} aria-hidden />
+                <Image src={item.icon} alt="" width={34} height={34} aria-hidden />
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
