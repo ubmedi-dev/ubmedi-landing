@@ -1,15 +1,5 @@
 import Image from "next/image";
 
-const quickStats = [
-  { icon: "/SVG/아트보드 6.svg", label: "입국 지원" },
-  { icon: "/SVG/아트보드 7.svg", label: "진료 예약" },
-  { icon: "/SVG/아트보드 8.svg", label: "통역 서비스" },
-  { icon: "/SVG/아트보드 9.svg", label: "사후 관리" },
-  { icon: "/SVG/아트보드 4.svg", label: "맞춤 일정" },
-  { icon: "/SVG/아트보드 5.svg", label: "체류 케어" },
-  { icon: "/SVG/대지 1.svg", label: "24시간 상담" },
-];
-
 const partnerHospitals = [
   "세브란스병원",
   "아산의료원",
@@ -24,26 +14,26 @@ const specialties = [
   {
     image: "/건강검진.jpg",
     title: "건강검진",
-    summary: "정밀 검진과 전문의 상담을 연계해 상태를 빠르게 파악합니다.",
-    tags: ["프리미엄 검진", "당일 상담"],
+    summary: "기본 검진부터 프리미엄 종합검진, 암 검진, 여성 검진 등 목적에 맞게 제공합니다.",
+    tags: ["혈액", "영상", "초음파"],
   },
   {
     image: "/피부과.jpg",
-    title: "피부과",
-    summary: "시술 목적과 회복 기간을 고려해 맞춤형 프로그램을 설계합니다.",
-    tags: ["미용 시술", "회복 케어"],
+    title: "성형외과",
+    summary: "눈, 코, 윤곽 성형부터 지방흡입, 재건 성형까지 한국 최고 수준의 성형 외과를 연결합니다.",
+    tags: ["눈성형", "코성형", "윤곽"],
   },
   {
     image: "/magnific__beigetoned-luxury-hospital-lobby-waiting-area-spac__11816.png",
-    title: "내과",
-    summary: "진료 전후 이동, 검사, 통역까지 한 흐름으로 관리합니다.",
-    tags: ["정밀 진단", "동행 지원"],
+    title: "치과",
+    summary: "충치 치료부터 투명교정, 임플란트, 라미네이트까지 구강 건강을 종합적으로 케어합니다.",
+    tags: ["임플란트", "투명교정", "심미"],
   },
   {
     image: "/정형외과.jpg",
     title: "정형외과",
-    summary: "재활 일정과 체류 기간을 고려한 치료 플랜을 제안합니다.",
-    tags: ["수술 연계", "재활 설계"],
+    summary: "최신 장비를 활용한 정밀 종합진단으로 건강 위험 요소를 선제적으로 관리합니다.",
+    tags: ["무릎통증", "허리수술", "재활"],
   },
 ];
 
@@ -210,40 +200,56 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" id="specialties">
+      <section className="section specialty-section" id="specialties">
         <div className="container">
-          <div className="section-heading">
-            <p className="eyebrow">SPECIALTY CURATION</p>
-            <h2>목적별 메디컬 분야 큐레이션</h2>
-            <p>원하는 치료 목적과 체류 계획에 맞춰 적합한 진료 분야부터 정리합니다.</p>
+          <div className="specialty-heading">
+            <h2>
+              목적별 <span>메디컬 분야</span> 큐레이션
+            </h2>
+            <p>증상이나 시술명을 입력하면 해당 진료과로 바로 이동합니다.</p>
           </div>
 
-          <div className="search-shell" aria-label="검색 박스">
-            <span>어떤 치료나 검진을 찾고 계신가요?</span>
-            <button type="button" aria-label="검색">
-              검색
+          <div className="search-shell specialty-search" aria-label="검색 박스">
+            <div className="search-prompt">
+              <span className="search-plus" aria-hidden>
+                ✦
+              </span>
+              <span>예) 라식, 허리통증, 충치, 성형 등</span>
+            </div>
+            <button type="button" aria-label="검색" className="search-button">
+              ⌕
             </button>
           </div>
 
-          <div className="card-grid">
-            {specialties.map((item) => (
-              <article className="specialty-card" key={item.title}>
-                <div className="card-media">
-                  <Image src={item.image} alt={item.title} fill sizes="(max-width: 900px) 100vw, 25vw" />
-                </div>
-                <div className="card-body">
-                  <h3>{item.title}</h3>
-                  <p>{item.summary}</p>
-                  <div className="tag-row">
-                    {item.tags.map((tag) => (
-                      <span className="tag" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
+          <div className="specialty-list-heading">진료과 선택</div>
+
+          <div className="specialty-carousel">
+            <button className="carousel-arrow is-left" type="button" aria-label="이전">
+              ‹
+            </button>
+            <div className="card-grid specialty-grid">
+              {specialties.map((item) => (
+                <article className="specialty-card" key={item.title}>
+                  <div className="card-media specialty-media">
+                    <Image src={item.image} alt={item.title} fill sizes="(max-width: 900px) 100vw, 25vw" />
                   </div>
-                </div>
-              </article>
-            ))}
+                  <div className="card-body specialty-card-body">
+                    <h3>{item.title}</h3>
+                    <p>{item.summary}</p>
+                    <div className="tag-row specialty-tags">
+                      {item.tags.map((tag) => (
+                        <span className="tag specialty-tag" key={tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <button className="carousel-arrow is-right" type="button" aria-label="다음">
+              ›
+            </button>
           </div>
         </div>
       </section>
