@@ -7,7 +7,17 @@ const quickStats = [
   { icon: "/SVG/아트보드 9.svg", label: "사후 관리" },
   { icon: "/SVG/아트보드 4.svg", label: "맞춤 일정" },
   { icon: "/SVG/아트보드 5.svg", label: "체류 케어" },
-  { icon: "/SVG/대지 1.svg", label: "24h 상담" },
+  { icon: "/SVG/대지 1.svg", label: "24시간 상담" },
+];
+
+const partnerHospitals = [
+  "세브란스병원",
+  "아산의료원",
+  "강남성심병원",
+  "삼성서울병원",
+  "강남성형외과",
+  "서울삼성치과의원",
+  "서울보라매병원",
 ];
 
 const specialties = [
@@ -131,15 +141,27 @@ export default function Home() {
       <header className="site-header">
         <div className="container header-inner">
           <a className="brand" href="#top" aria-label="UB MEDI 홈">
-            <Image src="/UB MEDI LOGO.svg" alt="UB MEDI" width={120} height={30} priority />
+            <Image src="/UB MEDI LOGO.svg" alt="UB MEDI" width={138} height={34} priority />
           </a>
+
           <nav className="main-nav" aria-label="주요 메뉴">
-            <a href="#specialties">서비스</a>
-            <a href="#process">프로세스</a>
-            <a href="#benefits">차별점</a>
-            <a href="#reviews">후기</a>
-            <a href="#contact">문의</a>
+            <a href="#top">소개</a>
+            <a href="#specialties">치료 분야</a>
+            <a href="#process">이용 안내</a>
+            <a href="#reviews">이용 후기</a>
+            <a href="#contact">고객 센터</a>
           </nav>
+
+          <div className="header-utils" aria-label="연락 정보">
+            <button className="lang-chip" type="button">
+              KO
+            </button>
+            <span className="header-accent">24시간 상담 가능</span>
+            <span className="header-phone">+82-0507-1465-7060</span>
+            <a className="header-whatsapp" href="#contact">
+              WhatsApp
+            </a>
+          </div>
         </div>
       </header>
 
@@ -153,32 +175,38 @@ export default function Home() {
           sizes="100vw"
         />
         <div className="hero-overlay" />
+
         <div className="container hero-content">
-          <p className="eyebrow">UB MEDI PREMIUM CARE</p>
+          <span className="hero-badge">PREMIUM MEDICAL CONCIERGE</span>
           <h1>
             한 번의 선택으로 완성되는
             <br />
             <span>프리미엄 맞춤 메디컬 투어</span>
           </h1>
           <p className="hero-copy">
-            건강검진과 치료, 시술, 회복 관리까지.
+            글로벌 최고 수준의 의료진과 1:1 전담 컨시어지가
             <br />
-            한국 체류 일정 전체를 하나의 동선으로 설계합니다.
+            입국부터 귀국까지 당신만을 위한 여정을 설계합니다.
           </p>
-          <a className="primary-button" href="#contact">
-            맞춤 상담 신청하기
+          <a className="primary-button hero-button" href="#contact">
+            무료상담 신청하기
           </a>
         </div>
-      </section>
 
-      <section className="stat-strip">
-        <div className="container stat-grid">
-          {quickStats.map((item) => (
-            <div className="stat-item" key={item.label}>
-              <Image src={item.icon} alt="" width={18} height={18} aria-hidden />
-              <span>{item.label}</span>
+        <div className="hero-partners">
+          <div className="container">
+            <div className="partners-title">
+              <span>협력 메디컬 투어 파트너</span>
             </div>
-          ))}
+            <div className="partners-grid">
+              {partnerHospitals.map((partner) => (
+                <div className="partner-item" key={partner}>
+                  <span className="partner-dot" aria-hidden />
+                  <span>{partner}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
