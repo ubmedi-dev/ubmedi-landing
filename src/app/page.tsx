@@ -106,28 +106,51 @@ const benefits = [
 const reviews = [
   {
     image: "/고객 후기 프로필/beautiful-cheerful-woman-sitting-by-white-wall.jpg",
-    name: "Josephine W.",
-    text: "검진부터 체류 일정까지 정리돼 있어서 한국 방문이 훨씬 편했습니다.",
+    name: "Zhang Wei",
+    country: "China",
+    text: "입국 전 상담부터 병원 예약까지 빠르게 정리돼 처음 한국 의료투어를 진행하는데 큰 도움이 됐습니다.",
   },
   {
     image: "/고객 후기 프로필/medium-shot-smiley-man-posing-outdoors.jpg",
-    name: "Alex M.",
-    text: "병원 선택 이유와 회복 일정까지 설명이 명확해서 신뢰가 갔습니다.",
+    name: "Sato Sakura",
+    country: "Japan",
+    text: "상담부터 병원 매칭, 회복 관리까지 흐름이 자연스러워 프리미엄 서비스를 받는 느낌이 강했습니다.",
   },
   {
     image: "/고객 후기 프로필/medium-shot-asian-girl-city.jpg",
-    name: "Yuna K.",
-    text: "피부과 시술 후 사후 케어 메시지가 꾸준히 와서 안심됐습니다.",
+    name: "Mohammed Al-Farsi",
+    country: "UAE",
+    text: "의료 통역과 공항 픽업이 정확하게 연결돼 진료 일정이 전혀 흔들리지 않았습니다.",
   },
   {
     image: "/고객 후기 프로필/smiling-elderly-woman-city.jpg",
-    name: "Maria T.",
-    text: "통역과 이동 지원이 자연스럽게 이어져서 가족도 만족했습니다.",
+    name: "Elena Petrov",
+    country: "Russia",
+    text: "회복 기간 동안 숙소와 병원 이동 관리가 세심해서 가족 모두 편안하게 일정을 소화했습니다.",
   },
   {
     image: "/고객 후기 프로필/young-man-middle-eastern-young-man-traditional-clothing.jpg",
-    name: "Omar A.",
-    text: "짧은 체류 일정 안에서 필요한 진료를 효율적으로 받을 수 있었습니다.",
+    name: "Sarah Johnson",
+    country: "USA",
+    text: "짧은 체류 일정이었는데도 필요한 검진과 시술을 효율적으로 받을 수 있도록 세팅해줬습니다.",
+  },
+  {
+    image: "/고객 후기 프로필/beautiful-cheerful-woman-sitting-by-white-wall.jpg",
+    name: "Amina Yusuf",
+    country: "Nigeria",
+    text: "사후 관리까지 포함된 시스템이라 귀국 후에도 경과를 꾸준히 확인받을 수 있었습니다.",
+  },
+  {
+    image: "/고객 후기 프로필/medium-shot-smiley-man-posing-outdoors.jpg",
+    name: "Lucas Martin",
+    country: "France",
+    text: "병원 선택 기준과 담당 의료진 설명이 명확해서 의사결정이 매우 빨라졌습니다.",
+  },
+  {
+    image: "/고객 후기 프로필/medium-shot-asian-girl-city.jpg",
+    name: "Nguyen Linh",
+    country: "Vietnam",
+    text: "도착부터 귀국까지 하나의 채널로 소통되니 여행과 치료를 동시에 준비해도 부담이 적었습니다.",
   },
 ];
 
@@ -390,30 +413,40 @@ export default function Home() {
       </section>
 
       <section className="section review-section" id="reviews">
-        <div className="container">
-          <div className="section-heading">
+        <div className="container review-wrap">
+          <div className="review-heading">
             <h2>
               실제 고객의 <span>메디컬 투어 후기</span>
             </h2>
-            <p>해외 체류 환자와 보호자가 경험한 실제 여정을 간단히 정리했습니다.</p>
+            <p>47개국 고객들이 직접 전하는 솔직한 경험</p>
           </div>
-          <div className="review-grid">
-            {reviews.map((review) => (
-              <article className="review-card" key={review.name}>
-                <Image className="review-avatar" src={review.image} alt={review.name} width={52} height={52} />
-                <div>
-                  <h3>{review.name}</h3>
+          <div className="review-marquee">
+            <div className="review-track">
+              {[...reviews, ...reviews].map((review, index) => (
+                <article className="review-card" key={`${review.name}-${index}`}>
+                  <div className="review-card-head">
+                    <div className="review-avatar-frame">
+                      <Image className="review-avatar" src={review.image} alt={review.name} width={36} height={36} />
+                    </div>
+                    <div className="review-meta">
+                      <h3>{review.name}</h3>
+                      <span>{review.country}</span>
+                    </div>
+                  </div>
+                  <div className="review-stars" aria-label="5점 만점">
+                    ★★★★★
+                  </div>
                   <p>{review.text}</p>
-                </div>
-              </article>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       <section className="section faq-section">
-        <div className="container narrow">
-          <div className="section-heading">
+        <div className="container faq-wrap">
+          <div className="faq-heading">
             <h2>FAQ</h2>
             <p>자주 묻는 질문</p>
           </div>

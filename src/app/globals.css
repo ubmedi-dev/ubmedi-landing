@@ -853,47 +853,166 @@ textarea {
 }
 
 .review-section {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(242, 245, 242, 0.9));
+  background: #ffffff;
+  padding-top: 86px;
+  padding-bottom: 88px;
 }
 
-.review-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+.review-wrap {
+  width: min(1120px, calc(100% - 28px));
+}
+
+.review-heading {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.review-heading h2 {
+  margin: 0;
+  font-size: clamp(30px, 3.4vw, 46px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.review-heading h2 span {
+  color: #2cc2af;
+}
+
+.review-heading p {
+  margin: 10px 0 0;
+  color: #8b9597;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.review-marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.review-track {
+  display: flex;
+  width: max-content;
   gap: 16px;
+  animation: review-marquee 42s linear infinite;
 }
 
 .review-card {
-  border-radius: 18px;
-  padding: 16px;
+  width: 214px;
+  min-height: 110px;
+  border-radius: 14px;
+  border: 1px solid rgba(225, 230, 231, 0.95);
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(152, 166, 166, 0.16);
+  padding: 12px 14px;
+}
+
+.review-card-head {
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-avatar-frame {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #eef2f1;
 }
 
 .review-avatar {
+  width: 100%;
+  height: 100%;
   border-radius: 999px;
   object-fit: cover;
-  flex-shrink: 0;
+  display: block;
+}
+
+.review-meta h3 {
+  margin: 0;
+  color: #3d4548;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.review-meta span {
+  display: block;
+  margin-top: 2px;
+  color: #9ca6a7;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.review-stars {
+  margin: 8px 0 8px;
+  color: #f2b540;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.review-card p {
+  margin: 0;
+  color: #6d7678;
+  font-size: 10px;
+  line-height: 1.6;
+  font-weight: 700;
 }
 
 .faq-section {
-  background: linear-gradient(180deg, #f7faf9, #eef3f2);
+  background: linear-gradient(180deg, #f4f8f8, #eef5f4);
+  padding-top: 72px;
+  padding-bottom: 86px;
+}
+
+.faq-wrap {
+  width: min(760px, calc(100% - 28px));
+}
+
+.faq-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.faq-heading h2 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.faq-heading p {
+  margin: 8px 0 0;
+  color: #2a2d2f;
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .faq-list {
   display: grid;
-  gap: 12px;
+  gap: 0;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(224, 231, 233, 0.96);
+  box-shadow: 0 10px 24px rgba(150, 164, 165, 0.14);
+  overflow: hidden;
 }
 
 .faq-item {
-  border-radius: 18px;
-  padding: 0 22px;
+  padding: 0 18px;
+  background: #fff;
+}
+
+.faq-item + .faq-item {
+  border-top: 1px solid rgba(231, 235, 237, 0.9);
 }
 
 .faq-item summary {
   list-style: none;
   cursor: pointer;
-  padding: 22px 0;
+  padding: 18px 34px 18px 0;
+  color: #43484a;
+  font-size: 13px;
   font-weight: 700;
   position: relative;
 }
@@ -906,9 +1025,15 @@ textarea {
   content: "+";
   position: absolute;
   right: 0;
-  top: 20px;
-  color: var(--teal);
-  font-size: 22px;
+  top: 15px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #2b6487;
+  color: #fff;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
 }
 
 .faq-item[open] summary::after {
@@ -917,9 +1042,20 @@ textarea {
 
 .faq-item p {
   margin: 0;
-  padding: 0 0 22px;
+  padding: 0 0 18px;
   color: var(--muted);
+  font-size: 13px;
   line-height: 1.75;
+}
+
+@keyframes review-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 8px));
+  }
 }
 
 .contact-section {
