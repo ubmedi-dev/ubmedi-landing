@@ -477,42 +477,87 @@ export default function Home() {
               <br />
               지금 시작하세요
             </h2>
-            <ul>
-              <li>희망 진료과와 일정만 알려주시면 맞춤 동선을 설계합니다.</li>
-              <li>병원 예약부터 통역, 이동, 체류 지원까지 한 번에 연결합니다.</li>
-              <li>상담 내용은 빠르게 검토 후 순차적으로 안내드립니다.</li>
+            <p className="contact-intro">
+              신청서를 작성해주시면 24시간 이내에 전담 코디네이터가
+              <br />
+              품격 있는 맞춤형 의료 컨설팅을 제공합니다.
+            </p>
+            <ul className="contact-points">
+              <li>무료 맞춤형 의료 플랜 컨설팅</li>
+              <li>전담 의료 전문 코디네이터 1:1 배정</li>
+              <li>안심할 수 있는 완벽한 정보 보안, 사후 케어까지</li>
             </ul>
           </div>
+
           <form className="contact-form">
             <h3>상담 신청서 작성</h3>
+            <p className="contact-form-note">작성 후 24시간 이내 전담 코디네이터가 연락드립니다.</p>
+
             <div className="form-grid">
               <label>
-                이름
-                <input type="text" placeholder="이름을 입력하세요" />
+                성함
+                <input type="text" placeholder="이름을 입력해주세요" />
               </label>
               <label>
                 국적
-                <input type="text" placeholder="국가명을 입력하세요" />
+                <input type="text" placeholder="거주 국가를 입력해주세요" />
               </label>
             </div>
+
             <label>
-              연락처
-              <input type="text" placeholder="+82 / WhatsApp / Telegram" />
+              이메일 (Email)
+              <input type="email" placeholder="이메일 주소를 입력해주세요" />
             </label>
+
             <label>
-              희망 진료 분야
-              <input type="text" placeholder="예: 건강검진, 피부과, 정형외과" />
+              메신저 (WhatsApp/WeChat/Line 등)
+              <input type="text" placeholder="메신저 종류와 ID를 입력해주세요" />
             </label>
+
             <label>
-              방문 예정 시기
-              <input type="text" placeholder="예: 2026년 7월 첫째 주" />
+              관심 분야
+              <input type="text" placeholder="희망하시는 의료 분야를 선택해주세요" />
             </label>
+
             <label>
-              문의 내용
-              <textarea rows={5} placeholder="현재 상태, 희망 일정, 동행 인원 등을 적어주세요" />
+              희망 방문 시기
+              <div className="visit-grid">
+                <select defaultValue="2026">
+                  <option value="2026">2026년</option>
+                  <option value="2027">2027년</option>
+                </select>
+                <select defaultValue="8">
+                  <option value="1">1월</option>
+                  <option value="2">2월</option>
+                  <option value="3">3월</option>
+                  <option value="4">4월</option>
+                  <option value="5">5월</option>
+                  <option value="6">6월</option>
+                  <option value="7">7월</option>
+                  <option value="8">8월</option>
+                  <option value="9">9월</option>
+                  <option value="10">10월</option>
+                  <option value="11">11월</option>
+                  <option value="12">12월</option>
+                </select>
+                <select defaultValue="1">
+                  <option value="1">1일</option>
+                  <option value="5">5일</option>
+                  <option value="10">10일</option>
+                  <option value="15">15일</option>
+                  <option value="20">20일</option>
+                  <option value="25">25일</option>
+                </select>
+              </div>
             </label>
+
+            <label>
+              추가 문의 사항
+              <textarea rows={5} placeholder="궁금한 점이나 특별한 요청사항을 자유롭게 작성해주세요" />
+            </label>
+
             <button className="primary-button form-button" type="submit">
-              무료 맞춤 상담 신청
+              지금 바로 무료 상담 신청 →
             </button>
           </form>
         </div>
