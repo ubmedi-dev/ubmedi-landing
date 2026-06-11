@@ -59,7 +59,7 @@ type Copy = {
     cta: string;
     partnerTitle: string;
   };
-  partners: string[];
+  partners: { label: string; logo: string }[];
   specialty: {
     titlePrefix: string;
     titleAccent: string;
@@ -168,13 +168,13 @@ const copies: Record<Locale, Copy> = {
       partnerTitle: "협력 메디컬 투어 파트너",
     },
     partners: [
-      "세브란스병원",
-      "아산의료원",
-      "강남성심병원",
-      "삼성서울병원",
-      "강남성형외과",
-      "서울삼성치과의원",
-      "서울보라매병원",
+      { label: "세브란스병원", logo: "/파트너사로고/세브란스병원.svg" },
+      { label: "서울아산병원", logo: "/파트너사로고/서울아산병원.svg" },
+      { label: "성모병원", logo: "/파트너사로고/성모병원.svg" },
+      { label: "삼성서울병원", logo: "/파트너사로고/삼성서울병원.svg" },
+      { label: "고려대학교의료원", logo: "/파트너사로고/고려대학교의료원.svg" },
+      { label: "서울대학교병원", logo: "/파트너사로고/서울대학교병원.svg" },
+      { label: "일산병원", logo: "/파트너사로고/일산병원.svg" },
     ],
     specialty: {
       titlePrefix: "목적별",
@@ -441,13 +441,13 @@ const copies: Record<Locale, Copy> = {
       partnerTitle: "Medical Tour Partners",
     },
     partners: [
-      "Severance Hospital",
-      "Asan Medical Center",
-      "Gangnam Sacred Heart",
-      "Samsung Medical Center",
-      "Gangnam Plastic Surgery",
-      "Seoul Dental Clinic",
-      "Seoul Boramae Hospital",
+      { label: "Severance Hospital", logo: "/파트너사로고/세브란스병원.svg" },
+      { label: "Seoul Asan Hospital", logo: "/파트너사로고/서울아산병원.svg" },
+      { label: "St. Mary's Hospital", logo: "/파트너사로고/성모병원.svg" },
+      { label: "Samsung Medical Center", logo: "/파트너사로고/삼성서울병원.svg" },
+      { label: "Korea University Medical Center", logo: "/파트너사로고/고려대학교의료원.svg" },
+      { label: "Seoul National University Hospital", logo: "/파트너사로고/서울대학교병원.svg" },
+      { label: "Ilsan Hospital", logo: "/파트너사로고/일산병원.svg" },
     ],
     specialty: {
       titlePrefix: "Purpose-Based",
@@ -714,13 +714,13 @@ const copies: Record<Locale, Copy> = {
       partnerTitle: "Эмнэлгийн аяллын түншүүд",
     },
     partners: [
-      "Severance Hospital",
-      "Asan Medical Center",
-      "Gangnam Sacred Heart",
-      "Samsung Medical Center",
-      "Gangnam Plastic Surgery",
-      "Seoul Dental Clinic",
-      "Seoul Boramae Hospital",
+      { label: "Северанс эмнэлэг", logo: "/파트너사로고/세브란스병원.svg" },
+      { label: "Сөүл Асан эмнэлэг", logo: "/파트너사로고/서울아산병원.svg" },
+      { label: "Сонмо эмнэлэг", logo: "/파트너사로고/성모병원.svg" },
+      { label: "Самсунг Сөүл эмнэлэг", logo: "/파트너사로고/삼성서울병원.svg" },
+      { label: "Кореа их сургуулийн эмнэлэг", logo: "/파트너사로고/고려대학교의료원.svg" },
+      { label: "Сөүл үндэсний их сургуулийн эмнэлэг", logo: "/파트너사로고/서울대학교병원.svg" },
+      { label: "Илсан эмнэлэг", logo: "/파트너사로고/일산병원.svg" },
     ],
     specialty: {
       titlePrefix: "Зорилгод суурилсан",
@@ -1055,16 +1055,20 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="hero-partners">
-          <div className="container">
-            <div className="partners-title">
-              <span>{copy.hero.partnerTitle}</span>
-            </div>
-            <div className="partners-grid">
-              {copy.partners.map((partner) => (
-                <div className="partner-item" key={partner}>
-                  <span className="partner-dot" aria-hidden />
-                  <span>{partner}</span>
+      </section>
+
+      <section className="hero-partners">
+        <div className="container">
+          <div className="partners-title">
+            <span>{copy.hero.partnerTitle}</span>
+          </div>
+          <div className="partners-marquee">
+            <div className="partners-track">
+              {[...copy.partners, ...copy.partners].map((partner, index) => (
+                <div className="partner-item" key={`${partner.label}-${index}`}>
+                  <div className="partner-logo-wrap">
+                    <Image src={partner.logo} alt={partner.label} fill className="partner-logo" sizes="132px" />
+                  </div>
                 </div>
               ))}
             </div>

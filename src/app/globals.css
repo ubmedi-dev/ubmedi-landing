@@ -308,12 +308,7 @@ textarea {
 }
 
 .hero-partners {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  background: var(--gold);
+  background: rgba(207, 174, 111, 0.5);
   color: #fff;
   padding: 14px 0 18px;
 }
@@ -339,29 +334,45 @@ textarea {
   background: rgba(255, 245, 221, 0.55);
 }
 
-.partners-grid {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 12px;
+.partners-marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.partners-track {
+  display: flex;
+  width: max-content;
+  gap: 72px;
+  animation: partners-marquee 36s linear infinite;
 }
 
 .partner-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 28px;
+  min-height: 78px;
   color: #fffef7;
   font-size: 12px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
-.partner-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  background: #fff;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+.partner-logo-wrap {
+  position: relative;
+  width: 132px;
+  height: 72px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.partner-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
 }
 
 .section {
@@ -1125,6 +1136,16 @@ textarea {
   }
 }
 
+@keyframes partners-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 27px));
+  }
+}
+
 .contact-section {
   position: relative;
   padding: 104px 0 118px;
@@ -1432,8 +1453,8 @@ textarea {
     justify-content: flex-end;
   }
 
-  .partners-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .partners-track {
+    gap: 34px;
   }
 }
 
@@ -1486,19 +1507,19 @@ textarea {
   }
 
   .hero-section {
-    min-height: 620px;
+    min-height: 560px;
   }
 
   .hero-content {
-    padding: 88px 0 156px;
+    padding: 88px 0 88px;
   }
 
   .hero-copy {
     font-size: 15px;
   }
 
-  .partners-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .partners-track {
+    gap: 26px;
   }
 
   .section,
@@ -1527,8 +1548,8 @@ textarea {
   .review-grid,
   .process-grid,
   .footer-grid,
-  .partners-grid {
-    grid-template-columns: 1fr;
+  .partners-track {
+    gap: 20px;
   }
 
   .partners-title::before,
