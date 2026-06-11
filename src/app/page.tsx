@@ -48,11 +48,36 @@ const ubmediStrengths = [
 const genericSupport = ["개인 이동", "일반적인 통역", "의료 연계만 제공", "사후 관리 없음", "영업시간 내 한정"];
 
 const processSteps = [
-  { icon: "/SVG/아트보드 2.svg", title: "상담 접수", text: "희망 진료, 일정, 체류 조건을 먼저 확인합니다." },
-  { icon: "/SVG/아트보드 3.svg", title: "병원 매칭", text: "분야와 예산에 맞는 병원과 의료진을 선별합니다." },
-  { icon: "/SVG/아트보드 4.svg", title: "방문 설계", text: "검사, 진료, 회복 일정을 한 번에 구성합니다." },
-  { icon: "/SVG/아트보드 8.svg", title: "현장 케어", text: "입국 후 통역, 이동, 접수, 동행을 지원합니다." },
-  { icon: "/SVG/아트보드 9.svg", title: "사후 관리", text: "귀국 이후 경과 확인과 추가 상담을 연결합니다." },
+  {
+    icon: "/SVG/아트보드 2.svg",
+    step: "STEP01",
+    title: "1:1 맞춤형 의료 컨설팅",
+    text: "전담 코디네이터가 24시간 밀착 케어로 고객 맞춤형 의료 여정을 설계합니다.",
+  },
+  {
+    icon: "/SVG/아트보드 3.svg",
+    step: "STEP02",
+    title: "의료투어 예약",
+    text: "국내 최고 대학병원 예약부터 비자, 숙박, 항공까지 원스톱으로 해결합니다.",
+  },
+  {
+    icon: "/SVG/아트보드 4.svg",
+    step: "STEP03",
+    title: "입국 & 프리미엄 의전",
+    text: "공항 픽업부터 병원까지, 전담 코디네이터가 1:1로 밀착 동행합니다.",
+  },
+  {
+    icon: "/SVG/아트보드 8.svg",
+    step: "STEP04",
+    title: "프리미엄 회복 및 웰니스",
+    text: "최고급 휴니스 프로그램과 맞춤형 단독 관리를 위한 프리미엄 솔루션이 제공됩니다.",
+  },
+  {
+    icon: "/SVG/아트보드 9.svg",
+    step: "STEP05",
+    title: "귀국 & 사후 관리",
+    text: "귀국하시는 길까지 세심하게 동행하고, 이후 건강 상태를 체크하며 필요한 상담을 이어갑니다.",
+  },
 ];
 
 const benefits = [
@@ -292,28 +317,43 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" id="process">
-        <div className="container">
-          <div className="section-heading">
-            <p className="eyebrow">PREMIUM MEDICAL TOUR</p>
+      <section className="section process-section" id="process">
+        <div className="container process-wrap">
+          <div className="process-heading">
             <h2>
               입국 전부터 귀국 후까지
               <br />
               <span>프리미엄 메디컬 투어</span>
             </h2>
-            <p>상담 단계부터 사후 확인까지 끊기지 않는 흐름으로 연결합니다.</p>
+            <p>전 세계 고객들이 경험한 UB MEDI의 프리미엄 의료 여정</p>
           </div>
+
+          <div className="process-timeline">
+            <div className="timeline-line" aria-hidden />
+            <div className="timeline-points">
+              {processSteps.map((step, index) => (
+                <span className="timeline-point" key={step.title}>
+                  0{index + 1}
+                </span>
+              ))}
+            </div>
+          </div>
+
           <div className="process-grid">
-            {processSteps.map((step, index) => (
+            {processSteps.map((step) => (
               <article className="process-card" key={step.title}>
-                <div className="process-number">0{index + 1}</div>
-                <Image src={step.icon} alt="" width={28} height={28} aria-hidden />
+                <div className="process-card-top">
+                  <Image src={step.icon} alt="" width={22} height={22} aria-hidden />
+                  <span className="process-step-label">{step.step}</span>
+                </div>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
+                <div className="process-card-line" aria-hidden />
               </article>
             ))}
           </div>
-          <p className="section-note">환자 상태와 방문 목적에 따라 일정과 지원 항목은 유연하게 조정됩니다.</p>
+
+          <div className="process-badge">입국 전 플래닝부터 귀국 후 사후 케어까지, 5단계 완전 관리 서비스</div>
         </div>
       </section>
 
