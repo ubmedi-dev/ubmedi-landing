@@ -395,30 +395,54 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="container footer-grid">
-          <div>
-            <Image src="/UB MEDI LOGO.svg" alt="UB MEDI" width={124} height={32} />
-            <p>한국 프리미엄 메디컬 투어를 위한 맞춤형 케어 서비스</p>
-            <p>T. +82-10-0000-0000</p>
-            <p>E. hello@ubmedi.kr</p>
+          <div className="footer-brand">
+            <Image src="/UB MEDI LOGO.svg" alt="UB MEDI" width={154} height={40} />
+            <div className="footer-brand-copy">
+              <p className="footer-tagline">You, Better Medical</p>
+              <p>"당신을 위한, 더 나은 의료 경험"</p>
+            </div>
+            <div className="footer-socials" aria-label="소셜 링크">
+              <a href="#" aria-label="Facebook">
+                f
+              </a>
+              <a href="#" aria-label="Instagram">
+                ◎
+              </a>
+              <a href="#" aria-label="WhatsApp">
+                ◔
+              </a>
+            </div>
+            <p className="footer-copyright">COPYRIGHT © 2014 UB MED INC. ALL RIGHTS RESERVED.</p>
           </div>
-          <div>
+          <div className="footer-column">
             <h3>Contact Us</h3>
-            <p>서울시 강남구 테헤란로 00</p>
-            <p>평일 09:00 - 18:00</p>
-            <p>KakaoTalk / WhatsApp 상담 가능</p>
+            <p>연중무휴 24시간 상담</p>
+            <p>WhatsApp, 카카오톡 상담</p>
+            <p className="footer-spacer" />
+            <p>전화: +82-0507-1465-7060</p>
+            <p>kevin7060@naver.com</p>
+            <p className="footer-spacer" />
+            <p>주소:</p>
+            <p>상호: UB MEDI(유비 메디)</p>
+            <p>사업자 등록번호:</p>
+            <div className="footer-meta-links">
+              <a href="#">개인정보처리방침</a>
+              <a href="#">이메일무단수집거부</a>
+            </div>
           </div>
-          <div>
-            <h3>서비스</h3>
-            <p>검진 예약</p>
-            <p>치료 일정 설계</p>
-            <p>통역 · 차량 지원</p>
-            <p>사후 관리</p>
+          <div className="footer-column footer-links">
+            <h3>서비스 및 지원</h3>
+            <a href="#">소개</a>
+            <a href="#">치료 분야</a>
+            <a href="#">이용 안내</a>
+            <a href="#">이용 후기</a>
+            <a href="#">고객센터</a>
           </div>
-          <div>
+          <div className="footer-column footer-newsletter">
             <h3>Subscribe & Newsletter</h3>
             <div className="newsletter-row">
-              <input type="email" placeholder="이메일을 입력하세요" />
-              <button type="button">구독하기</button>
+              <input type="email" placeholder="Email address" />
+              <button type="button">Submit Now</button>
             </div>
           </div>
         </div>
