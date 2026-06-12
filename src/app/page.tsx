@@ -402,13 +402,14 @@ const copies: Record<Locale, Copy> = {
       quote: '"당신을 위한, 더 나은 의료 경험"',
       contactTitle: "Contact Us",
       contactLines: [
-        "연중무휴 24시간 상담",
         "WhatsApp, 카카오톡 상담",
         "전화: +82-0507-1465-7060",
         "kevin7060@naver.com",
-        "주소:",
-        "상호: UB MEDI(유비 메디)",
-        "사업자 등록번호:",
+        "법인명: 주식회사 유비메디 (UBMEDI CO., LTD)",
+        "대표자: 이시형",
+        "사업자 번호: 466-87-00555",
+        "주소: 서울특별시 성북구 서경로 31,",
+        "103동 1003호 (정릉동, 푸른마을 동아아파트)",
       ],
       businessTitle: "서비스 및 지원",
       businessLinks: ["소개", "치료 분야", "이용 안내", "이용 후기", "고객센터"],
@@ -675,13 +676,13 @@ const copies: Record<Locale, Copy> = {
       quote: '"A better medical experience made for you"',
       contactTitle: "Contact Us",
       contactLines: [
-        "24/7 year-round consultation",
         "WhatsApp and KakaoTalk support",
         "Tel: +82-0507-1465-7060",
-        "kevin7060@naver.com",
-        "Address:",
-        "Business: UB MEDI",
-        "Business Registration No.:",
+        "Company: UBMEDI CO., LTD",
+        "Representative: Lee Si-hyeong",
+        "Business Registration No.: 466-87-00555",
+        "Address: 31 Seogyeong-ro, Seongbuk-gu, Seoul,",
+        "Apt. 103-1003 (Jeongneung-dong, Pureunmaeul Dong-A Apartment)",
       ],
       businessTitle: "Services & Support",
       businessLinks: ["About", "Treatments", "Guide", "Reviews", "Support"],
@@ -948,13 +949,14 @@ const copies: Record<Locale, Copy> = {
       quote: '"Танд зориулсан илүү сайн эмнэлгийн туршлага"',
       contactTitle: "Contact Us",
       contactLines: [
-        "24 цагийн турш зөвлөгөө",
         "WhatsApp болон KakaoTalk зөвлөгөө",
         "Утас: +82-0507-1465-7060",
         "kevin7060@naver.com",
-        "Хаяг:",
-        "Байгууллага: UB MEDI",
-        "Регистрийн дугаар:",
+        "Компанийн нэр: UBMEDI CO., LTD",
+        "Төлөөлөгч: И Ши-хён",
+        "Бизнесийн бүртгэлийн дугаар: 466-87-00555",
+        "Хаяг: Сөүл, Сонбук-гу, Согён-ро 31,",
+        "103-р байр 1003 тоот (Жоннын-дон, Pureunmaeul Dong-A Apartment)",
       ],
       businessTitle: "Үйлчилгээ ба тусламж",
       businessLinks: ["Танилцуулга", "Эмчилгээ", "Үйлчилгээ", "Сэтгэгдэл", "Тусламж"],
@@ -1403,15 +1405,9 @@ export default function Home() {
           </div>
           <div className="footer-column">
             <h3>{copy.footer.contactTitle}</h3>
-            <p>{copy.footer.contactLines[0]}</p>
-            <p>{copy.footer.contactLines[1]}</p>
-            <p className="footer-spacer" />
-            <p>{copy.footer.contactLines[2]}</p>
-            <p>{copy.footer.contactLines[3]}</p>
-            <p className="footer-spacer" />
-            <p>{copy.footer.contactLines[4]}</p>
-            <p>{copy.footer.contactLines[5]}</p>
-            <p>{copy.footer.contactLines[6]}</p>
+            {copy.footer.contactLines.map((line, index) => (
+              <p key={`${copy.localeLabel}-contact-${index}`}>{line}</p>
+            ))}
             <div className="footer-meta-links">
               <a href="#">개인정보처리방침</a>
               <a href="#">이메일무단수집거부</a>
