@@ -144,6 +144,12 @@ type Copy = {
   };
 };
 
+const headerMessengers = [
+  { label: "WeChat", icon: "/messenger/wechat.svg", href: "#contact" },
+  { label: "Messenger", icon: "/messenger/messenger.svg", href: "#contact" },
+  { label: "WhatsApp", icon: "/messenger/whatsapp.svg", href: "#contact" },
+] as const;
+
 const copies: Record<Locale, Copy> = {
   ko: {
     localeLabel: "KOR",
@@ -227,31 +233,31 @@ const copies: Record<Locale, Copy> = {
       badge: "입국 전 플래닝부터 귀국 후 사후 케어까지, 5단계 완전 관리 서비스",
       items: [
         {
-          icon: "/SVG/아트보드 2.svg",
+          icon: "/step/STEP1.svg",
           step: "STEP01",
           title: "1:1 맞춤형 의료 컨설팅",
           text: "전담 코디네이터가 24시간 밀착 케어로 고객 맞춤형 의료 여정을 설계합니다.",
         },
         {
-          icon: "/SVG/아트보드 3.svg",
+          icon: "/step/STEP2.svg",
           step: "STEP02",
           title: "의료투어 예약",
           text: "국내 최고 대학병원 예약부터 비자, 숙박, 항공까지 원스톱으로 해결합니다.",
         },
         {
-          icon: "/SVG/아트보드 4.svg",
+          icon: "/step/STEP3.svg",
           step: "STEP03",
           title: "입국 & 프리미엄 의전",
           text: "공항 픽업부터 병원까지, 전담 코디네이터가 1:1로 밀착 동행합니다.",
         },
         {
-          icon: "/SVG/아트보드 8.svg",
+          icon: "/step/STEP4.svg",
           step: "STEP04",
           title: "프리미엄 회복 및 웰니스",
           text: "최고급 휴니스 프로그램과 맞춤형 단독 관리를 위한 프리미엄 솔루션이 제공됩니다.",
         },
         {
-          icon: "/SVG/아트보드 9.svg",
+          icon: "/step/STEP5.svg",
           step: "STEP05",
           title: "귀국 & 사후 관리",
           text: "귀국하시는 길까지 세심하게 동행하고, 이후 건강 상태를 체크하며 필요한 상담을 이어갑니다.",
@@ -501,31 +507,31 @@ const copies: Record<Locale, Copy> = {
       badge: "A complete 5-step management service from pre-arrival planning to post-return aftercare",
       items: [
         {
-          icon: "/SVG/아트보드 2.svg",
+          icon: "/step/STEP1.svg",
           step: "STEP01",
           title: "1:1 Tailored Medical Consulting",
           text: "A dedicated coordinator designs a personalized medical journey with 24-hour close support.",
         },
         {
-          icon: "/SVG/아트보드 3.svg",
+          icon: "/step/STEP2.svg",
           step: "STEP02",
           title: "Medical Tour Reservation",
           text: "From top university hospital booking to visa, accommodation, and flights, everything is arranged in one flow.",
         },
         {
-          icon: "/SVG/아트보드 4.svg",
+          icon: "/step/STEP3.svg",
           step: "STEP03",
           title: "Arrival & Premium Escort",
           text: "From airport pickup to hospital visits, your dedicated coordinator accompanies you closely.",
         },
         {
-          icon: "/SVG/아트보드 8.svg",
+          icon: "/step/STEP4.svg",
           step: "STEP04",
           title: "Premium Recovery & Wellness",
           text: "Exclusive wellness programs and private recovery solutions are provided for your healing phase.",
         },
         {
-          icon: "/SVG/아트보드 9.svg",
+          icon: "/step/STEP5.svg",
           step: "STEP05",
           title: "Return & Aftercare",
           text: "We accompany you through departure and continue checking your condition afterward with follow-up support.",
@@ -774,31 +780,31 @@ const copies: Record<Locale, Copy> = {
       badge: "Ирэхээс өмнөх төлөвлөлтөөс буцсаны дараах хяналт хүртэлх 5 шатлалт бүрэн үйлчилгээ",
       items: [
         {
-          icon: "/SVG/아트보드 2.svg",
+          icon: "/step/STEP1.svg",
           step: "STEP01",
           title: "1:1 хувийн зөвлөгөө",
           text: "Хариуцсан зохицуулагч 24 цагийн турш ойр дэмжлэг үзүүлж таны эмнэлгийн аяллыг төлөвлөнө.",
         },
         {
-          icon: "/SVG/아트보드 3.svg",
+          icon: "/step/STEP2.svg",
           step: "STEP02",
           title: "Эмнэлгийн аяллын захиалга",
           text: "Их сургуулийн эмнэлгийн цаг, виз, байр, нислэгийг нэг урсгалаар шийднэ.",
         },
         {
-          icon: "/SVG/아트보드 4.svg",
+          icon: "/step/STEP3.svg",
           step: "STEP03",
           title: "Ирэлт ба дээд зэрэглэлийн угталт",
           text: "Нисэх буудлын тосолтоос эхлээд эмнэлэг хүртэл зохицуулагч тань 1:1 дагалдана.",
         },
         {
-          icon: "/SVG/아트보드 8.svg",
+          icon: "/step/STEP4.svg",
           step: "STEP04",
           title: "Сэргэлт ба wellness",
           text: "Таны нөхөн сэргээлтэд зориулсан тусгай wellness болон премиум шийдлүүдийг санал болгоно.",
         },
         {
-          icon: "/SVG/아트보드 9.svg",
+          icon: "/step/STEP5.svg",
           step: "STEP05",
           title: "Буцах ба дараах хяналт",
           text: "Буцах хүртэл тань дагалдан, дараа нь биеийн байдлыг хянаж зөвлөгөөг үргэлжлүүлнэ.",
@@ -1027,11 +1033,14 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <span className="header-accent">{copy.header.available}</span>
             <span className="header-phone">+82-0507-1465-7060</span>
-            <a className="header-whatsapp" href="#contact">
-              {copy.header.whatsapp}
-            </a>
+            <div className="header-messengers" aria-label="Messenger links">
+              {headerMessengers.map((item) => (
+                <a key={item.label} className="header-messenger" href={item.href} aria-label={item.label}>
+                  <Image src={item.icon} alt={item.label} width={28} height={28} />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </header>

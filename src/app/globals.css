@@ -183,24 +183,22 @@ textarea {
 }
 
 .header-accent,
-.header-phone,
-.header-whatsapp {
+.header-phone {
   color: #2f9b71;
 }
 
-.header-whatsapp {
+.header-messengers {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
-.header-whatsapp::before {
-  content: "";
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: #34c759;
-  box-shadow: inset 0 0 0 4px #ffffff;
+.header-messenger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
 }
 
 .hero-section {
