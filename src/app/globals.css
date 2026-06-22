@@ -100,7 +100,7 @@ textarea {
 .header-utils {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
@@ -187,6 +187,16 @@ textarea {
   color: #2f9b71;
 }
 
+.header-phone {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.header-phone:hover {
+  color: #248563;
+}
+
 .header-messengers {
   display: inline-flex;
   align-items: center;
@@ -197,8 +207,8 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
 }
 
 .hero-section {

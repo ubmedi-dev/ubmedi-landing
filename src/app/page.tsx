@@ -145,9 +145,10 @@ type Copy = {
 };
 
 const headerMessengers = [
-  { label: "WeChat", icon: "/messenger/wechat.svg", href: "#contact" },
-  { label: "Messenger", icon: "/messenger/messenger.svg", href: "#contact" },
-  { label: "WhatsApp", icon: "/messenger/whatsapp.svg", href: "#contact" },
+  { label: "Viber", icon: "/messenger/viber.svg", href: "viber://chat?number=+821033907060" },
+  { label: "Messenger", icon: "/messenger/messenger.svg", href: "https://m.me/1166142713249729" },
+  { label: "WhatsApp", icon: "/messenger/whatsapp.svg", href: "https://wa.me/821033907060" },
+  { label: "WeChat", icon: "/messenger/wechat.svg", href: "weixin://dl/search?wxid_6kt3xkqmvcxe22" },
 ] as const;
 
 const copies: Record<Locale, Copy> = {
@@ -1033,11 +1034,20 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <span className="header-phone">+82-0507-1465-7060</span>
+            <a className="header-phone" href="tel:+82050714657060" aria-label="Call UB MEDI">
+              +82-0507-1465-7060
+            </a>
             <div className="header-messengers" aria-label="Messenger links">
               {headerMessengers.map((item) => (
-                <a key={item.label} className="header-messenger" href={item.href} aria-label={item.label}>
-                  <Image src={item.icon} alt={item.label} width={28} height={28} />
+                <a
+                  key={item.label}
+                  className="header-messenger"
+                  href={item.href}
+                  aria-label={item.label}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image src={item.icon} alt={item.label} width={24} height={24} />
                 </a>
               ))}
             </div>
