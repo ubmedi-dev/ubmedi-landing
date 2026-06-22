@@ -1,9 +1,35 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Locale = "ko" | "en" | "mn";
+
+function detectPreferredLocale(): Locale {
+  if (typeof window === "undefined") {
+    return "en";
+  }
+
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone?.toLowerCase() ?? "";
+  const browserLanguages = [navigator.language, ...(navigator.languages ?? [])]
+    .filter(Boolean)
+    .map((language) => language.toLowerCase());
+
+  if (timezone.includes("seoul") || browserLanguages.some((language) => language === "ko" || language.startsWith("ko-"))) {
+    return "ko";
+  }
+
+  if (
+    timezone.includes("ulaanbaatar") ||
+    timezone.includes("choibalsan") ||
+    timezone.includes("hovd") ||
+    browserLanguages.some((language) => language === "mn" || language.startsWith("mn-"))
+  ) {
+    return "mn";
+  }
+
+  return "en";
+}
 
 type Review = {
   image: string;
@@ -898,23 +924,47 @@ const copies: Record<Locale, Copy> = {
       items: [
         {
           question: "What services does UB MEDI provide?",
-          answer: "We support the full medical tour journey, including hospital booking, medical interpretation, airport pickup, accommodation linkage, and aftercare.",
+          answer:
+            "UB MEDI provides total medical tourism care for international patients. From online consultation before arrival to hospital booking, airport pickup, dedicated medical interpretation, premium accommodation coordination, and aftercare after returning home, we support the entire journey. You can complete your Korean medical journey through UB MEDI without preparing each step separately.",
         },
         {
           question: "Which countries can use the service?",
-          answer: "Consultation is available regardless of nationality, and we suggest the most suitable medical schedule based on each client’s country and purpose.",
+          answer:
+            "We are currently operating mainly for clients from Mongolia and China, and we plan to expand to more countries in sequence. If you live in another country, consultation is still available, so please feel free to contact us.",
         },
         {
           question: "What are the main treatment and procedure categories?",
-          answer: "We connect a wide range of specialties including health screening, plastic surgery, dermatology, dentistry, and orthopedics.",
+          answer:
+            "Our key fields include major treatment and surgery such as oncology, cardiology, neurology, and spine care; health screening programs from general to premium and specialty exams; plastic surgery including eyes, nose, contouring, and liposuction; and ophthalmology including LASIK, LASEK, cataracts, and retinal care. We officially partner with six major Korean hospitals including Asan Medical Center, Severance Hospital, and Samsung Medical Center, as well as key specialist clinics in Gangnam.",
         },
         {
-          question: "How long does reservation and scheduling take?",
-          answer: "Timing depends on the case, but in general we provide an initial response within 24 hours and then coordinate hospitals and visits step by step.",
+          question: "How long does reservation and the overall schedule usually take?",
+          answer:
+            "In most cases, your assigned coordinator contacts you within 1 to 3 days after you submit an inquiry. Depending on the department and hospital, it usually takes about 1 to 2 weeks from consultation request to confirmation of your Korea visit schedule. If urgent treatment is needed, fast-track coordination can also be arranged upon request.",
         },
         {
-          question: "How do you respond in an emergency during the stay?",
-          answer: "A dedicated coordinator remains reachable through a 24/7 channel and can connect you to hospitals immediately when needed.",
+          question: "How much does the medical service cost?",
+          answer: "The cost varies depending on the treatment field, hospital, and length of stay. After you apply for consultation, your dedicated coordinator will provide a customized estimate based on your situation.",
+        },
+        {
+          question: "How is the interpretation service provided?",
+          answer:
+            "A dedicated interpreter accompanies you throughout the entire process, from medical consultation and surgical consent to explanation of test results. Mongolian and Chinese medical interpreters are assigned, and they accurately communicate even specialized medical terminology.",
+        },
+        {
+          question: "How are accommodation and pickup services operated?",
+          answer:
+            "When you arrive at the airport, a dedicated staff member picks you up and guides you to your accommodation. We connect you with premium hotels and residences selected for hospital access and convenience, and vehicle support can also be provided when transportation is needed during your stay.",
+        },
+        {
+          question: "How do you respond if an emergency occurs during the stay?",
+          answer:
+            "Your dedicated coordinator responds quickly throughout your stay. We support a wide range of situations such as sudden worsening of symptoms, additional treatment needs, or schedule changes, and if necessary we provide emergency hospital linkage and accompaniment.",
+        },
+        {
+          question: "How is aftercare provided after returning home?",
+          answer:
+            "Even after you return home, you can continue receiving follow-up care through your dedicated coordinator. We support progress checks, guidance on whether additional treatment is needed, and coordination for future visits so that you can continue managing your care comfortably from your home country.",
         },
       ],
     },
@@ -1252,23 +1302,47 @@ const copies: Record<Locale, Copy> = {
       items: [
         {
           question: "UB MEDI ямар үйлчилгээ үзүүлдэг вэ?",
-          answer: "Эмнэлгийн цаг, орчуулга, нисэх буудлын тосолт, байр, дараах хяналт зэрэг бүх үе шатыг нэг цонхоор дэмждэг.",
+          answer:
+            "UB MEDI нь гадаад өвчтөнүүдэд зориулсан эмнэлгийн аяллын иж бүрэн тусламжийг үзүүлдэг. Солонгост ирэхээс өмнөх онлайн зөвлөгөө, эмнэлгийн цаг захиалга, нисэх буудлын тосолт, хариуцсан орчуулагч, дээд зэрэглэлийн байр, эх орондоо буцсаны дараах хяналт хүртэл бүх үе шатыг хамтран зохион байгуулдаг. Тус тусад нь бэлтгэл хийхгүйгээр UB MEDI-аар дамжуулан Солонгос дахь эмчилгээний аяллаа бүрэн шийдэх боломжтой.",
         },
         {
           question: "Ямар улсын иргэд үйлчилгээ ашиглаж болох вэ?",
-          answer: "Үндэстэн харгалзахгүй зөвлөгөө авах боломжтой бөгөөд зорилгод тохирсон эмчилгээний хуваарийг санал болгоно.",
+          answer:
+            "Одоогоор Монгол болон Хятадын үйлчлүүлэгчдэд төвлөрөн үйлчилгээ үзүүлж байгаа бөгөөд цаашид үйлчилгээний орнуудыг шат дараатайгаар нэмэгдүүлэхээр төлөвлөж байна. Эдгээрээс өөр улсад амьдардаг байсан ч зөвлөгөө авах боломжтой тул бидэнтэй холбогдоно уу.",
         },
         {
           question: "Гол эмчилгээ, үйлчилгээний төрлүүд юу вэ?",
-          answer: "Эрүүл мэндийн үзлэг, гоо заслын мэс засал, арьс, шүд, яс үе зэрэг олон чиглэлийн эмчилгээтэй холбодог.",
+          answer:
+            "Манай үндсэн чиглэлд хорт хавдар, зүрх, тархи-мэдрэл, нурууны хүнд эмчилгээ ба мэс засал; ерөнхий, иж бүрэн, нарийн мэргэжлийн эрүүл мэндийн үзлэг; нүд, хамар, нүүрний хэлбэр, өөх соруулах гоо заслын мэс засал; мөн LASIK, LASEK, катаракт, торлогийн эмчилгээ зэрэг нүдний салбар багтдаг. Мөн Асан эмнэлэг, Северанс, Самсунг Сөүл зэрэг Солонгосын 6 том эмнэлэг болон Ганнамын гол мэргэжлийн клиникүүдтэй албан ёсны түншлэлтэй.",
         },
         {
-          question: "Захиалга болон хуваарь зохион байгуулахад хэр хугацаа ордог вэ?",
-          answer: "Тохиолдлоос шалтгаална. Ерөнхийдөө 24 цагийн дотор эхний хариуг өгч, дараа нь эмнэлэг болон цагийг үе шаттай баталгаажуулна.",
+          question: "Захиалга болон нийт хуваарьт ерөнхийдөө хэр хугацаа ордог вэ?",
+          answer:
+            "Ихэнх тохиолдолд зөвлөгөөний хүсэлт илгээснээс хойш 1-3 хоногийн дотор таны хариуцсан зохицуулагч холбогдоно. Эмчилгээний тасаг болон эмнэлгээс шалтгаалан зөвлөгөө өгөхөөс Солонгост ирэх хуваарь батлагдах хүртэл ихэвчлэн 1-2 долоо хоног шаардлагатай. Яаралтай үзлэг, эмчилгээ хэрэгтэй бол хурдан зохицуулалт хийх боломжтой.",
         },
         {
-          question: "Түргэн тусламж шаардлагатай үед яах вэ?",
-          answer: "24 цагийн холбооны сувагтай зохицуулагч ажиллаж, шаардлагатай үед эмнэлэгтэй шууд холбож өгдөг.",
+          question: "Эмнэлгийн үйлчилгээний үнэ хэрхэн тооцогдох вэ?",
+          answer: "Зардал нь эмчилгээний төрөл, эмнэлэг, оршин суух хугацаанаас хамаарч өөр өөр байна. Зөвлөгөө авах хүсэлт илгээсний дараа таны хариуцсан зохицуулагч нөхцөл байдалд тохирсон үнийн саналыг гаргаж өгнө.",
+        },
+        {
+          question: "Орчуулгын үйлчилгээ хэрхэн үзүүлэгддэг вэ?",
+          answer:
+            "Хариуцсан орчуулагч нь эмчийн зөвлөгөө, хагалгааны зөвшөөрөл, шинжилгээний хариу тайлбарлах зэрэг бүх үе шатанд хамт явна. Монгол, Хятад хэлний эмнэлгийн мэргэжлийн орчуулагч томилогдож, эмнэлгийн нарийн нэр томьёог ч үнэн зөв дамжуулна.",
+        },
+        {
+          question: "Байр болон тосох үйлчилгээ хэрхэн зохион байгуулагддаг вэ?",
+          answer:
+            "Нисэх буудалд ирэхэд хариуцсан ажилтан тосож аваад байр хүртэл хүргэж өгнө. Эмнэлэгт ойр, тав тухтай байдлыг харгалзан дээд зэрэглэлийн зочид буудал болон резиденсийг санал болгодог бөгөөд оршин суух хугацаанд шаардлагатай тохиолдолд тээврийн хэрэгслийн дэмжлэг үзүүлнэ.",
+        },
+        {
+          question: "Оршин суух хугацаанд яаралтай нөхцөл байдал үүсвэл яаж ажиллах вэ?",
+          answer:
+            "Таны хариуцсан зохицуулагч оршин суух хугацаанд түргэн шуурхай хариу үзүүлнэ. Шинж тэмдэг огцом дордох, нэмэлт үзлэг хэрэг болох, хуваарь өөрчлөгдөх зэрэг олон нөхцөлд дэмжлэг үзүүлж, шаардлагатай бол яаралтай эмнэлэгтэй холбож хамт явна.",
+        },
+        {
+          question: "Эх орондоо буцсаны дараах хяналт хэрхэн явагдах вэ?",
+          answer:
+            "Буцсаны дараа ч таны хариуцсан зохицуулагчаар дамжуулан тогтмол дараах хяналт авах боломжтой. Биеийн байдлын явц шалгах, нэмэлт эмчилгээ хэрэгтэй эсэхийг зөвлөх, дахин ирэх хуваарь зохицуулах зэрэгт дэмжлэг үзүүлж, эх орондоо байсан ч эмчилгээгээ үргэлжлүүлэн тухтай удирдах боломжийг бүрдүүлнэ.",
         },
       ],
     },
@@ -1332,7 +1406,7 @@ function getStars() {
 }
 
 export default function Home() {
-  const [locale, setLocale] = useState<Locale>("ko");
+  const [locale, setLocale] = useState<Locale>("en");
   const [isLocaleOpen, setIsLocaleOpen] = useState(false);
   const [specialtyPage, setSpecialtyPage] = useState(0);
   const [contactSubmitState, setContactSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -1348,6 +1422,19 @@ export default function Home() {
     inquiry: "",
   });
   const copy = copies[locale];
+  useEffect(() => {
+    setLocale(detectPreferredLocale());
+  }, []);
+
+  useEffect(() => {
+    setContactForm((prev) => ({
+      ...prev,
+      visitYear: copies[locale].contact.visitYear[0] ?? "",
+      visitMonth: copies[locale].contact.visitMonth[0] ?? "",
+      visitDay: copies[locale].contact.visitDay[0] ?? "",
+    }));
+    setContactSubmitState("idle");
+  }, [locale]);
   const specialtyPageStarts = copy.specialty.items.length > 4 ? [0, copy.specialty.items.length - 4] : [0];
   const currentSpecialtyPage = Math.min(specialtyPage, specialtyPageStarts.length - 1);
   const visibleSpecialties = copy.specialty.items.slice(
