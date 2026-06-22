@@ -1323,6 +1323,18 @@ export default function Home() {
   const [locale, setLocale] = useState<Locale>("ko");
   const [isLocaleOpen, setIsLocaleOpen] = useState(false);
   const [specialtyPage, setSpecialtyPage] = useState(0);
+  const [contactSubmitState, setContactSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    nation: "",
+    email: "",
+    messenger: "",
+    interest: "",
+    visitYear: "2026년",
+    visitMonth: "1월",
+    visitDay: "1일",
+    inquiry: "",
+  });
   const copy = copies[locale];
   const specialtyPageStarts = copy.specialty.items.length > 4 ? [0, copy.specialty.items.length - 4] : [0];
   const currentSpecialtyPage = Math.min(specialtyPage, specialtyPageStarts.length - 1);
@@ -1330,6 +1342,67 @@ export default function Home() {
     specialtyPageStarts[currentSpecialtyPage],
     specialtyPageStarts[currentSpecialtyPage] + 4,
   );
+  const handleContactFieldChange = (field: keyof typeof contactForm, value: string) => {
+    setContactForm((prev) => ({ ...prev, [field]: value }));
+    if (contactSubmitState !== "idle") {
+      setContactSubmitState("idle");
+    }
+  };
+  const contactSubmitLabel =
+    contactSubmitState === "submitting"
+      ? locale === "ko"
+        ? "전송 중..."
+        : locale === "en"
+          ? "Sending..."
+          : "Илгээж байна..."
+      : copy.contact.submit;
+  const contactSubmitMessage =
+    contactSubmitState === "success"
+      ? locale === "ko"
+        ? "상담 신청이 전송되었습니다. 확인 후 연락드리겠습니다."
+        : locale === "en"
+          ? "Your inquiry has been sent. We will contact you after review."
+          : "Таны хүсэлт илгээгдлээ. Шалгаад эргэн холбогдоно."
+      : contactSubmitState === "error"
+        ? locale === "ko"
+          ? "메일 전송에 실패했습니다. 잠시 후 다시 시도해주세요."
+          : locale === "en"
+            ? "Failed to send the email. Please try again later."
+            : "Имэйл илгээж чадсангүй. Түр хүлээгээд дахин оролдоно уу."
+        : "";
+  const handleContactSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setContactSubmitState("submitting");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contactForm),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit contact form");
+      }
+
+      setContactSubmitState("success");
+      setContactForm({
+        name: "",
+        nation: "",
+        email: "",
+        messenger: "",
+        interest: "",
+        visitYear: copy.contact.visitYear[0] ?? "",
+        visitMonth: copy.contact.visitMonth[0] ?? "",
+        visitDay: copy.contact.visitDay[0] ?? "",
+        inquiry: "",
+      });
+    } catch {
+      setContactSubmitState("error");
+    }
+  };
 
   return (
     <main className="page-shell">
@@ -1830,54 +1903,79 @@ export default function Home() {
             </ul>
           </div>
 
-          <form className="contact-form">
+          <form className="contact-form" onSubmit={handleContactSubmit}>
             <h3>{copy.contact.formTitle}</h3>
             <p className="contact-form-note">{copy.contact.formNote}</p>
 
             <div className="form-grid">
               <label>
                 {copy.contact.nameLabel}
-                <input type="text" placeholder={copy.contact.namePlaceholder} />
+                <input
+                  type="text"
+                  placeholder={copy.contact.namePlaceholder}
+                  value={contactForm.name}
+                  onChange={(event) => handleContactFieldChange("name", event.target.value)}
+                />
               </label>
               <label>
                 {copy.contact.nationLabel}
-                <input type="text" placeholder={copy.contact.nationPlaceholder} />
+                <input
+                  type="text"
+                  placeholder={copy.contact.nationPlaceholder}
+                  value={contactForm.nation}
+                  onChange={(event) => handleContactFieldChange("nation", event.target.value)}
+                />
               </label>
             </div>
 
             <label>
               {copy.contact.emailLabel}
-              <input type="email" placeholder={copy.contact.emailPlaceholder} />
+              <input
+                type="email"
+                placeholder={copy.contact.emailPlaceholder}
+                value={contactForm.email}
+                onChange={(event) => handleContactFieldChange("email", event.target.value)}
+              />
             </label>
 
             <label>
               {copy.contact.messengerLabel}
-              <input type="text" placeholder={copy.contact.messengerPlaceholder} />
+              <input
+                type="text"
+                placeholder={copy.contact.messengerPlaceholder}
+                value={contactForm.messenger}
+                onChange={(event) => handleContactFieldChange("messenger", event.target.value)}
+              />
             </label>
 
             <label>
               {copy.contact.interestLabel}
-              <input type="text" placeholder={copy.contact.interestPlaceholder} />
+              <input
+                type="text"
+                placeholder={copy.contact.interestPlaceholder}
+                value={contactForm.interest}
+                onChange={(event) => handleContactFieldChange("interest", event.target.value)}
+              />
             </label>
 
             <label>
               {copy.contact.visitLabel}
               <div className="visit-grid">
-                <select defaultValue={copy.contact.visitYear[0]}>
+                <select value={contactForm.visitYear} onChange={(event) => handleContactFieldChange("visitYear", event.target.value)}>
                   {copy.contact.visitYear.map((item) => (
                     <option key={item} value={item}>
                       {item}
                     </option>
                   ))}
                 </select>
-                <select defaultValue={copy.contact.visitMonth[7] ?? copy.contact.visitMonth[0]}>
+                <select value={contactForm.visitMonth} onChange={(event) => handleContactFieldChange("visitMonth", event.target.value)}>
                   {copy.contact.visitMonth.map((item) => (
                     <option key={item} value={item}>
                       {item}
                     </option>
                   ))}
                 </select>
-                <select defaultValue={copy.contact.visitDay[0]}>
+                <select value={contactForm.visitDay} onChange={(event) => handleContactFieldChange("visitDay", event.target.value)}>
                   {copy.contact.visitDay.map((item) => (
                     <option key={item} value={item}>
                       {item}
@@ -1889,12 +1987,20 @@ export default function Home() {
 
             <label>
               {copy.contact.inquiryLabel}
-              <textarea rows={5} placeholder={copy.contact.inquiryPlaceholder} />
+              <textarea
+                rows={5}
+                placeholder={copy.contact.inquiryPlaceholder}
+                value={contactForm.inquiry}
+                onChange={(event) => handleContactFieldChange("inquiry", event.target.value)}
+              />
             </label>
 
-            <button className="primary-button form-button" type="submit">
-              {copy.contact.submit}
+            <button className="primary-button form-button" type="submit" disabled={contactSubmitState === "submitting"}>
+              {contactSubmitLabel}
             </button>
+            {contactSubmitMessage ? (
+              <p className={`contact-submit-message is-${contactSubmitState}`}>{contactSubmitMessage}</p>
+            ) : null}
           </form>
         </div>
       </section>
