@@ -62,6 +62,12 @@ type PartnerLogoGroup = {
   subtitle: string;
 };
 
+type FooterSocialLink = {
+  label: string;
+  href: string;
+  icon: string;
+};
+
 type Copy = {
   localeLabel: string;
   nav: {
@@ -178,12 +184,14 @@ type Copy = {
     tagline: string;
     quote: string;
     contactTitle: string;
-    contactLines: string[];
+    contactPrimary: string[];
+    contactMeta: string[];
     businessTitle: string;
     businessLinks: string[];
     newsletterTitle: string;
     newsletterPlaceholder: string;
     newsletterButton: string;
+    socialLinks: FooterSocialLink[];
     copyright: string;
   };
 };
@@ -590,21 +598,22 @@ const copies: Record<Locale, Copy> = {
       tagline: "You, Better Medical",
       quote: '"당신을 위한, 더 나은 의료 경험"',
       contactTitle: "Contact Us",
-      contactLines: [
-        "WhatsApp, 카카오톡 상담",
-        "전화: +82-0507-1465-7060",
-        "kevin7060@naver.com",
-        "법인명: 주식회사 유비메디 (UBMEDI CO., LTD)",
-        "대표자: 이시형",
-        "사업자 번호: 466-87-00555",
-        "주소: 서울특별시 성북구 서경로 31,",
-        "103동 1003호 (정릉동, 푸른마을 동아아파트)",
+      contactPrimary: ["연중무휴 24시간 상담", "온라인 상담 가능", "전화: +82-10-8811-9761", "info@ubmedi.com"],
+      contactMeta: [
+        "주소: 서울특별시 금천구 가산동 319-8 에이스한솔타워 11층 1107호",
+        "상호: 주식회사 유비메디 (UBMEDI CO., LTD)",
+        "사업자 등록번호: 466-87-00555",
       ],
       businessTitle: "서비스 및 지원",
       businessLinks: ["소개", "치료 분야", "이용 안내", "이용 후기", "고객센터"],
       newsletterTitle: "Subscribe & Newsletter",
       newsletterPlaceholder: "Email address",
       newsletterButton: "Submit Now",
+      socialLinks: [
+        { label: "Facebook", href: "https://m.me/1166142713249729", icon: "/footer/facebook.svg" },
+        { label: "Instagram", href: "https://www.instagram.com/ubmedi/", icon: "/footer/instagram.svg" },
+        { label: "Phone", href: "tel:+821088119761", icon: "/footer/phone.svg" },
+      ],
       copyright: "COPYRIGHT © 2014 UB MED INC. ALL RIGHTS RESERVED.",
     },
   },
@@ -943,20 +952,22 @@ const copies: Record<Locale, Copy> = {
       tagline: "You, Better Medical",
       quote: '"A better medical experience made for you"',
       contactTitle: "Contact Us",
-      contactLines: [
-        "WhatsApp and KakaoTalk support",
-        "Tel: +82-0507-1465-7060",
+      contactPrimary: ["24/7 year-round consultation", "Online consultation available", "Tel: +82-10-8811-9761", "info@ubmedi.com"],
+      contactMeta: [
+        "Address: 11F 1107, Ace Hansol Tower, 319-8 Gasan-dong, Geumcheon-gu, Seoul",
         "Company: UBMEDI CO., LTD",
-        "Representative: Lee Si-hyeong",
         "Business Registration No.: 466-87-00555",
-        "Address: 31 Seogyeong-ro, Seongbuk-gu, Seoul,",
-        "Apt. 103-1003 (Jeongneung-dong, Pureunmaeul Dong-A Apartment)",
       ],
       businessTitle: "Services & Support",
       businessLinks: ["About", "Treatments", "Guide", "Reviews", "Support"],
       newsletterTitle: "Subscribe & Newsletter",
       newsletterPlaceholder: "Email address",
       newsletterButton: "Submit Now",
+      socialLinks: [
+        { label: "Facebook", href: "https://m.me/1166142713249729", icon: "/footer/facebook.svg" },
+        { label: "Instagram", href: "https://www.instagram.com/ubmedi/", icon: "/footer/instagram.svg" },
+        { label: "Phone", href: "tel:+821088119761", icon: "/footer/phone.svg" },
+      ],
       copyright: "COPYRIGHT © 2014 UB MED INC. ALL RIGHTS RESERVED.",
     },
   },
@@ -1295,21 +1306,22 @@ const copies: Record<Locale, Copy> = {
       tagline: "You, Better Medical",
       quote: '"Танд зориулсан илүү сайн эмнэлгийн туршлага"',
       contactTitle: "Contact Us",
-      contactLines: [
-        "WhatsApp болон KakaoTalk зөвлөгөө",
-        "Утас: +82-0507-1465-7060",
-        "kevin7060@naver.com",
+      contactPrimary: ["Жилийн турш 24 цагийн зөвлөгөө", "Онлайн зөвлөгөө авах боломжтой", "Утас: +82-10-8811-9761", "info@ubmedi.com"],
+      contactMeta: [
+        "Хаяг: Сөүл хот, Гымчон дүүрэг, Гасан-дон 319-8 Ace Hansol Tower 11F 1107",
         "Компанийн нэр: UBMEDI CO., LTD",
-        "Төлөөлөгч: И Ши-хён",
         "Бизнесийн бүртгэлийн дугаар: 466-87-00555",
-        "Хаяг: Сөүл, Сонбук-гу, Согён-ро 31,",
-        "103-р байр 1003 тоот (Жоннын-дон, Pureunmaeul Dong-A Apartment)",
       ],
       businessTitle: "Үйлчилгээ ба тусламж",
       businessLinks: ["Танилцуулга", "Эмчилгээ", "Үйлчилгээ", "Сэтгэгдэл", "Тусламж"],
       newsletterTitle: "Subscribe & Newsletter",
       newsletterPlaceholder: "Email address",
       newsletterButton: "Submit Now",
+      socialLinks: [
+        { label: "Facebook", href: "https://m.me/1166142713249729", icon: "/footer/facebook.svg" },
+        { label: "Instagram", href: "https://www.instagram.com/ubmedi/", icon: "/footer/instagram.svg" },
+        { label: "Phone", href: "tel:+821088119761", icon: "/footer/phone.svg" },
+      ],
       copyright: "COPYRIGHT © 2014 UB MED INC. ALL RIGHTS RESERVED.",
     },
   },
@@ -2008,29 +2020,32 @@ export default function Home() {
       <footer className="site-footer">
         <div className="container footer-grid">
           <div className="footer-brand">
-            <Image src="/UB MEDI LOGO.svg" alt="UB MEDI" width={154} height={40} />
+            <Image src="/footer/footer-logo-white.svg" alt="UB MEDI" width={180} height={46} />
             <div className="footer-brand-copy">
               <p className="footer-tagline">{copy.footer.tagline}</p>
               <p>{copy.footer.quote}</p>
             </div>
             <div className="footer-socials" aria-label="Social links">
-              <a href="#" aria-label="Facebook">
-                f
-              </a>
-              <a href="#" aria-label="Instagram">
-                ◎
-              </a>
-              <a href="#" aria-label="WhatsApp">
-                ◔
-              </a>
+              {copy.footer.socialLinks.map((item) => (
+                <a key={item.label} href={item.href} aria-label={item.label} target="_blank" rel="noreferrer">
+                  <Image src={item.icon} alt={item.label} width={18} height={18} />
+                </a>
+              ))}
             </div>
             <p className="footer-copyright">{copy.footer.copyright}</p>
           </div>
           <div className="footer-column">
             <h3>{copy.footer.contactTitle}</h3>
-            {copy.footer.contactLines.map((line, index) => (
-              <p key={`${copy.localeLabel}-contact-${index}`}>{line}</p>
-            ))}
+            <div className="footer-contact-primary">
+              {copy.footer.contactPrimary.map((line, index) => (
+                <p key={`${copy.localeLabel}-contact-primary-${index}`}>{line}</p>
+              ))}
+            </div>
+            <div className="footer-contact-meta">
+              {copy.footer.contactMeta.map((line, index) => (
+                <p key={`${copy.localeLabel}-contact-meta-${index}`}>{line}</p>
+              ))}
+            </div>
             <div className="footer-meta-links">
               <a href="#">개인정보처리방침</a>
               <a href="#">이메일무단수집거부</a>

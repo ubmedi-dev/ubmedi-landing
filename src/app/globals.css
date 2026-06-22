@@ -2070,6 +2070,134 @@ textarea {
   font-weight: 700;
 }
 
+/* Footer final alignment to match reference */
+.site-footer {
+  border-top: 0;
+  background: #343b37;
+  padding: 52px 0 34px;
+}
+
+.footer-grid {
+  grid-template-columns: 1.02fr 0.98fr 0.72fr 0.9fr;
+  gap: 54px;
+  align-items: start;
+}
+
+.footer-brand-copy {
+  margin-top: 22px;
+}
+
+.footer-tagline {
+  margin-bottom: 6px;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.footer-brand-copy p:last-child {
+  font-size: 18px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.footer-column h3 {
+  margin: 0 0 22px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.footer-contact-primary {
+  display: grid;
+  gap: 6px;
+}
+
+.footer-contact-primary p {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.footer-contact-primary p:nth-child(3),
+.footer-contact-primary p:nth-child(4) {
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.footer-contact-meta {
+  margin-top: 34px;
+  display: grid;
+  gap: 2px;
+}
+
+.footer-contact-meta p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.footer-links {
+  gap: 14px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.footer-newsletter {
+  max-width: 300px;
+}
+
+.newsletter-row {
+  gap: 14px;
+}
+
+.newsletter-row input {
+  min-height: 46px;
+  border-radius: 12px;
+  border: 0;
+  color: #5c6769;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.newsletter-row button {
+  min-height: 44px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.footer-socials {
+  gap: 18px;
+  margin-top: 46px;
+}
+
+.footer-socials a {
+  width: 48px;
+  height: 48px;
+  box-shadow: none;
+}
+
+.footer-copyright {
+  margin-top: 18px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.footer-meta-links {
+  gap: 26px;
+  margin-top: 12px;
+}
+
+.footer-meta-links a {
+  font-size: 10px;
+  font-weight: 700;
+}
+
 @media (max-width: 1180px) {
   .header-inner {
     grid-template-columns: 160px 1fr;
@@ -2097,6 +2225,11 @@ textarea {
 
   .intro-backdrop {
     height: 480px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 38px;
   }
 
 }
@@ -2148,6 +2281,15 @@ textarea {
   .awards-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-newsletter {
+    max-width: 100%;
   }
 
   .award-logo-stack {
