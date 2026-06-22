@@ -37,6 +37,31 @@ type Benefit = {
   text: string;
 };
 
+type IntroFeature = {
+  number: string;
+  title: string;
+  text: string;
+};
+
+type TimelineItem = {
+  period: string;
+  lines: string[];
+};
+
+type AwardCard = {
+  images: { src: string; alt: string }[];
+  year: string;
+  title: string;
+  subtitle: string;
+};
+
+type PartnerLogoGroup = {
+  logos: { label: string; logo: string }[];
+  year: string;
+  title: string;
+  subtitle: string;
+};
+
 type Copy = {
   localeLabel: string;
   nav: {
@@ -49,6 +74,25 @@ type Copy = {
   header: {
     available: string;
     whatsapp: string;
+  };
+  introSection: {
+    tagline: string;
+    titleLine1: string;
+    titleLine2: string;
+    descriptionLine1: string;
+    descriptionLine2: string;
+    features: IntroFeature[];
+  };
+  timeline: {
+    title: string;
+    subtitle: string;
+    items: TimelineItem[];
+  };
+  awards: {
+    title: string;
+    subtitle: string;
+    cards: AwardCard[];
+    partnerGroup: PartnerLogoGroup;
   };
   hero: {
     badge: string;
@@ -165,6 +209,108 @@ const copies: Record<Locale, Copy> = {
       available: "24시간 상담 가능",
       whatsapp: "WhatsApp",
     },
+    introSection: {
+      tagline: "You, Better Medical UB MEDI",
+      titleLine1: "당신을 위한,",
+      titleLine2: "더 나은 프리미엄 의료의 동행",
+      descriptionLine1: "UB MEDI는 외국인 환자를 위한 한국 의료관광 원스톱 플랫폼으로",
+      descriptionLine2: "복잡한 의료 일정을 하나의 책임 운영으로 통합합니다.",
+      features: [
+        { number: "01", title: "의료 서비스", text: "상담을 통한 검증된 병원 · 의료진 연결" },
+        { number: "02", title: "전담 통역", text: "전 과정 동행하는 1:1 전담 통역 지원" },
+        { number: "03", title: "픽업 서비스", text: "공항부터 병원 · 숙소까지 전용 차량 이동" },
+        { number: "04", title: "프리미엄 숙소", text: "회복에 최적화된 프리미엄 숙소 제공" },
+        { number: "05", title: "컨시어지", text: "예약부터 귀국까지 VIP 컨시어지 제공" },
+      ],
+    },
+    timeline: {
+      title: "대표 이력 및 UB MEDI 설립 배경과 성장",
+      subtitle: "경험은 신뢰가 되고, 신뢰는 동행이 됩니다",
+      items: [
+        { period: "2005년 07월", lines: ["LG그룹 건설 공채 입사(대표)"] },
+        { period: "2006년 ~ 2008년", lines: ["동계 올림픽 대관령 알펜시아 조성 사업 (업무: 재경, 대표)"] },
+        { period: "2010년 ~ 2011년", lines: ["해외 UAE 아부다비 프로젝트 근무 (업무: 재무, 대표)"] },
+        { period: "2011년 ~ 2013년", lines: ["해외 방글라데시 근무 (업무: Branch Manager, 대표)"] },
+        { period: "2013년 ~ 2016년", lines: ["해외 터키 근무 (업무: Finacial Manager, 대표)"] },
+        {
+          period: "2016년 11월",
+          lines: ["국토부 장관 표창(대표)", "(업적: 터키 진출 한국 기업 TAX 절감 기여 / 연간 700억)"],
+        },
+        { period: "2017년", lines: ["외국인환자 유치 전문기업 UB MEDI 설립", "해외 UAE 근무 (Business Manager)"] },
+        {
+          period: "2019년",
+          lines: [
+            "UB MEDI 국민건강보험 일산병원 외국인 환자 유치 협약 체결",
+            "서울아산병원 우수 파트너사 선정",
+            "서울대학교병원 우수 유치업체 대상 수상",
+          ],
+        },
+        { period: "2022년", lines: ["호텔 그라체 브랜드 개발 및 위탁 운영 실시(대표)"] },
+        {
+          period: "2024년",
+          lines: [
+            "스테이지(STAY-G) 법인 설립(대표)",
+            "인천공항 시애틀 호텔 위탁",
+            "인천공항 시애틀 호텔 위탁 후 매도 성공",
+            "청평 원스테이 호텔 위탁",
+          ],
+        },
+        {
+          period: "2025년",
+          lines: [
+            "UB MEDI 서울아산병원 우수 파트너사 선정",
+            "6대 종합병원(서울대학교병원 · 삼성서울병원 · 서울아산병원 · 세브란스병원 · 서울성모병원 · 고려대학교병원) 공식 협력 파트너 등록",
+            "강남 성형외과 4개원 협력 파트너 등록",
+            "강남 피부과 3개원 협력 파트너 등록",
+          ],
+        },
+        {
+          period: "2026년",
+          lines: [
+            "UB MEDI 서울아산병원 우수 파트너사 누적 3회 선정",
+            "대표이사 이시형 취임 · 의료관광 통합 케어 사업 총괄",
+            "몽골·중국 마케팅 채널 구축 및 본격 런칭",
+            "ERP 시스템 도입으로 운영 효율화",
+            "스테이지 파트너십 체결 · 통역 · 픽업 · 컨시어지 · 숙소 원스톱 제공",
+          ],
+        },
+      ],
+    },
+    awards: {
+      title: "수상 및 파트너십 인증",
+      subtitle: "국내 최상급 의료기관이 선택한 파트너, UB MEDI의 신뢰는 증서로 증명됩니다.",
+      cards: [
+        {
+          images: [{ src: "/awards/snuh-award-2022.png", alt: "2022 Seoul National University Hospital award" }],
+          year: "2019",
+          title: "서울대학교병원",
+          subtitle: "우수 유치업체 대상 수상",
+        },
+        {
+          images: [
+            { src: "/awards/amc-award-2019.jpg", alt: "2019 Asan Medical Center excellence certificate" },
+            { src: "/awards/amc-award-2025.jpg", alt: "2025 Asan Medical Center excellence certificate" },
+            { src: "/awards/amc-award-2026.jpg", alt: "2026 Asan Medical Center excellence certificate" },
+          ],
+          year: "2019 · 2025 · 2026",
+          title: "서울아산병원",
+          subtitle: "우수 파트너사 3회 선정",
+        },
+      ],
+      partnerGroup: {
+        logos: [
+          { label: "서울아산병원", logo: "/파트너사로고/서울아산병원.svg" },
+          { label: "세브란스병원", logo: "/파트너사로고/세브란스병원.svg" },
+          { label: "삼성서울병원", logo: "/파트너사로고/삼성서울병원.svg" },
+          { label: "고려대학교의료원", logo: "/파트너사로고/고려대학교의료원.svg" },
+          { label: "서울대학교병원", logo: "/파트너사로고/서울대학교병원.svg" },
+          { label: "성모병원", logo: "/파트너사로고/성모병원.svg" },
+        ],
+        year: "2025",
+        title: "6대 종합병원",
+        subtitle: "외국인 환자 유치 협약 체결",
+      },
+    },
     hero: {
       badge: "PREMIUM MEDICAL CONCIERGE",
       titleTop: "한 번의 선택으로 완성되는",
@@ -184,38 +330,50 @@ const copies: Record<Locale, Copy> = {
       { label: "일산병원", logo: "/파트너사로고/일산병원.svg" },
     ],
     specialty: {
-      titlePrefix: "목적별",
-      titleAccent: "메디컬 분야",
-      titleSuffix: "큐레이션",
-      description: "증상이나 시술명을 입력하면 해당 진료과로 바로 이동합니다.",
+      titlePrefix: "증상부터 시술까지",
+      titleAccent: "목적에 맞는 의료",
+      titleSuffix: "를 바로 연결합니다",
+      description: "최고의 의료진과 검증된 제휴병원으로 당신의 치료 여정을 함께합니다.",
       searchPlaceholder: "예) 라식, 허리통증, 충치, 성형 등",
-      selectTitle: "진료과 선택",
+      selectTitle: "진료과 안내",
       prev: "이전",
       next: "다음",
       items: [
         {
+          image: "/specialty-surgery.jpg",
+          title: "중증 치료 · 수술",
+          summary: "글로벌 최고 수준의 의료진과 최신 장비로 암, 심장, 뇌신경, 척추 등 중증 질환 치료부터 수술까지 책임집니다.",
+          tags: ["종양", "심장혈관", "뇌신경", "척추관절"],
+        },
+        {
           image: "/건강검진.jpg",
           title: "건강검진",
           summary: "기본 검진부터 프리미엄 종합검진, 암 검진, 여성 검진 등 목적에 맞게 제공합니다.",
-          tags: ["혈액", "영상", "초음파"],
+          tags: ["기본", "종합", "특화"],
         },
         {
           image: "/피부과.jpg",
           title: "성형외과",
-          summary: "눈, 코, 윤곽 성형부터 지방흡입, 재건 성형까지 한국 최고 수준의 성형 외과를 연결합니다.",
-          tags: ["눈성형", "코성형", "윤곽"],
+          summary: "눈, 코 윤곽 성형부터 지방이식, 가슴 성형까지 한국 최고 수준의 성형 의료를 연결합니다.",
+          tags: ["눈 성형", "코 성형", "윤곽"],
+        },
+        {
+          image: "/specialty-ophthalmology.jpg",
+          title: "안과",
+          summary: "라식·라섹부터 백내장, 녹내장, 망막 질환까지 정밀 검사와 맞춤 치료를 제공합니다.",
+          tags: ["라식라섹", "백내장", "녹내장"],
+        },
+        {
+          image: "/정형외과.jpg",
+          title: "정형외과",
+          summary: "관절, 척추, 스포츠 손상, 재활 치료까지 움직임 회복에 필요한 정형외과 진료를 연결합니다.",
+          tags: ["무릎", "허리", "재활"],
         },
         {
           image: "/magnific__beigetoned-luxury-hospital-lobby-waiting-area-spac__11816.png",
           title: "치과",
           summary: "충치 치료부터 투명교정, 임플란트, 라미네이트까지 구강 건강을 종합적으로 케어합니다.",
-          tags: ["임플란트", "투명교정", "심미"],
-        },
-        {
-          image: "/정형외과.jpg",
-          title: "정형외과",
-          summary: "최신 장비를 활용한 정밀 종합진단으로 건강 위험 요소를 선제적으로 관리합니다.",
-          tags: ["무릎통증", "허리수술", "재활"],
+          tags: ["임플란트", "교정", "심미"],
         },
       ],
     },
@@ -439,6 +597,73 @@ const copies: Record<Locale, Copy> = {
       available: "24/7 Consultation",
       whatsapp: "WhatsApp",
     },
+    introSection: {
+      tagline: "You, Better Medical UB MEDI",
+      titleLine1: "For You,",
+      titleLine2: "A Better Premium Medical Companion",
+      descriptionLine1: "UB MEDI is a one-stop Korean medical tourism platform for international patients,",
+      descriptionLine2: "integrating complex medical schedules into one accountable operation.",
+      features: [
+        { number: "01", title: "Medical Service", text: "Verified hospitals and specialists connected through consultation" },
+        { number: "02", title: "Dedicated Interpreter", text: "1:1 interpreter support accompanying the entire journey" },
+        { number: "03", title: "Pickup Service", text: "Private transportation from airport to hospital and accommodation" },
+        { number: "04", title: "Premium Stay", text: "Recovery-optimized premium accommodations" },
+        { number: "05", title: "Concierge", text: "VIP concierge from reservation to return home" },
+      ],
+    },
+    timeline: {
+      title: "Leadership Journey and the Growth of UB MEDI",
+      subtitle: "Experience builds trust, and trust builds long-term care",
+      items: [
+        { period: "Jul 2005", lines: ["Joined LG Group construction division through open recruitment (CEO)"] },
+        { period: "2006 - 2008", lines: ["Worked on the Pyeongchang Alpensia development for the Winter Olympics (finance leadership)"] },
+        { period: "2010 - 2011", lines: ["Worked on the Abu Dhabi UAE project (finance leadership)"] },
+        { period: "2011 - 2013", lines: ["Worked in Bangladesh as Branch Manager"] },
+        { period: "2013 - 2016", lines: ["Worked in Turkey as Financial Manager"] },
+        { period: "Nov 2016", lines: ["Received Minister of Land award", "Recognized for tax reduction contribution for Korean companies in Turkey"] },
+        { period: "2017", lines: ["Founded UB MEDI, specializing in attracting international patients", "Worked in UAE as Business Manager"] },
+        { period: "2019", lines: ["Signed partnership with NHIS Ilsan Hospital", "Selected as an excellent partner by Asan Medical Center", "Received Seoul National University Hospital attraction award"] },
+        { period: "2022", lines: ["Launched Hotel Grace brand development and entrusted operations"] },
+        { period: "2024", lines: ["Founded STAY-G", "Entrusted Seattle Hotel near Incheon Airport", "Successfully sold after entrusted operation", "Entrusted Cheongpyeong Onestay Hotel"] },
+        { period: "2025", lines: ["Selected again as excellent Asan Medical Center partner", "Registered as official partner with six major hospitals", "Expanded Gangnam plastic surgery and dermatology partner network"] },
+        { period: "2026", lines: ["Three-time cumulative excellent partner selection", "CEO Lee Si-hyung appointed to lead integrated medical tourism care", "Expanded Mongolia and China marketing channels", "Introduced ERP for operational efficiency", "Completed one-stop partnership for interpretation, pickup, concierge, and stays"] },
+      ],
+    },
+    awards: {
+      title: "Awards and Partnership Credentials",
+      subtitle: "UB MEDI’s reliability is validated by leading Korean medical institutions.",
+      cards: [
+        {
+          images: [{ src: "/awards/snuh-award-2022.png", alt: "Seoul National University Hospital award" }],
+          year: "2019",
+          title: "Seoul National University Hospital",
+          subtitle: "Outstanding Patient Attraction Award",
+        },
+        {
+          images: [
+            { src: "/awards/amc-award-2019.jpg", alt: "2019 Asan Medical Center excellence certificate" },
+            { src: "/awards/amc-award-2025.jpg", alt: "2025 Asan Medical Center excellence certificate" },
+            { src: "/awards/amc-award-2026.jpg", alt: "2026 Asan Medical Center excellence certificate" },
+          ],
+          year: "2019 · 2025 · 2026",
+          title: "Asan Medical Center",
+          subtitle: "Selected as an Excellent Partner 3 Times",
+        },
+      ],
+      partnerGroup: {
+        logos: [
+          { label: "Asan Medical Center", logo: "/파트너사로고/서울아산병원.svg" },
+          { label: "Severance Hospital", logo: "/파트너사로고/세브란스병원.svg" },
+          { label: "Samsung Medical Center", logo: "/파트너사로고/삼성서울병원.svg" },
+          { label: "Korea University Medicine", logo: "/파트너사로고/고려대학교의료원.svg" },
+          { label: "Seoul National University Hospital", logo: "/파트너사로고/서울대학교병원.svg" },
+          { label: "The Catholic University of Korea St. Mary's Hospital", logo: "/파트너사로고/성모병원.svg" },
+        ],
+        year: "2025",
+        title: "Six Major General Hospitals",
+        subtitle: "Foreign Patient Attraction Partnership Agreements",
+      },
+    },
     hero: {
       badge: "PREMIUM MEDICAL CONCIERGE",
       titleTop: "One Decision Completes Your",
@@ -458,38 +683,50 @@ const copies: Record<Locale, Copy> = {
       { label: "Ilsan Hospital", logo: "/파트너사로고/일산병원.svg" },
     ],
     specialty: {
-      titlePrefix: "Purpose-Based",
-      titleAccent: "Medical Specialty",
-      titleSuffix: "Curation",
-      description: "Enter a symptom or procedure and move directly to the right specialty.",
+      titlePrefix: "From Symptoms to Procedures,",
+      titleAccent: "We Connect the Right Care",
+      titleSuffix: "for Your Goal",
+      description: "Top medical teams and verified partner hospitals guide your treatment journey.",
       searchPlaceholder: "e.g. LASIK, back pain, cavity, plastic surgery",
-      selectTitle: "Choose a Department",
+      selectTitle: "Treatment Guide",
       prev: "Previous",
       next: "Next",
       items: [
         {
+          image: "/specialty-surgery.jpg",
+          title: "Major Treatment & Surgery",
+          summary: "From cancer, heart, neurology, and spinal care to advanced surgeries, we connect world-class treatment teams.",
+          tags: ["Oncology", "Cardio", "Neuro", "Spine"],
+        },
+        {
           image: "/건강검진.jpg",
           title: "Health Screening",
           summary: "From basic checks to premium exams, cancer screening, and women’s care, we match the right program.",
-          tags: ["Bloodwork", "Imaging", "Ultrasound"],
+          tags: ["Basic", "Premium", "Specialty"],
         },
         {
           image: "/피부과.jpg",
           title: "Plastic Surgery",
-          summary: "From eyes, nose, and contouring to liposuction and reconstructive surgery, we connect leading Korean surgeons.",
+          summary: "From eyes and nose to contouring, fat grafting, and breast procedures, we connect leading Korean surgeons.",
           tags: ["Eyes", "Nose", "Contour"],
+        },
+        {
+          image: "/specialty-ophthalmology.jpg",
+          title: "Ophthalmology",
+          summary: "From LASIK and LASEK to cataracts, glaucoma, and retinal care, we provide precise diagnostics and tailored treatment.",
+          tags: ["LASIK", "Cataract", "Glaucoma"],
+        },
+        {
+          image: "/정형외과.jpg",
+          title: "Orthopedics",
+          summary: "We connect orthopedic care for joints, spine, sports injuries, and rehabilitation focused on movement recovery.",
+          tags: ["Knee", "Spine", "Rehab"],
         },
         {
           image: "/magnific__beigetoned-luxury-hospital-lobby-waiting-area-spac__11816.png",
           title: "Dentistry",
           summary: "From cavity care to clear aligners, implants, and laminates, we support comprehensive oral treatment.",
           tags: ["Implants", "Aligners", "Cosmetic"],
-        },
-        {
-          image: "/정형외과.jpg",
-          title: "Orthopedics",
-          summary: "Advanced diagnostics and treatment planning help manage musculoskeletal risks before they worsen.",
-          tags: ["Knee Pain", "Spine", "Rehab"],
         },
       ],
     },
@@ -712,6 +949,73 @@ const copies: Record<Locale, Copy> = {
       available: "24 цагийн зөвлөгөө",
       whatsapp: "WhatsApp",
     },
+    introSection: {
+      tagline: "You, Better Medical UB MEDI",
+      titleLine1: "Таны төлөө,",
+      titleLine2: "Илүү сайн премиум эмнэлгийн хамтрагч",
+      descriptionLine1: "UB MEDI нь гадаад өвчтөнүүдэд зориулсан Солонгосын эмнэлгийн аяллын one-stop платформ бөгөөд",
+      descriptionLine2: "олон шаттай эмчилгээний хуваарийг нэг хариуцсан системд нэгтгэдэг.",
+      features: [
+        { number: "01", title: "Эмнэлгийн үйлчилгээ", text: "Зөвлөгөөнд үндэслэн баталгаажсан эмнэлэг, эмчтэй холбох" },
+        { number: "02", title: "Хувийн орчуулагч", text: "Бүх шатанд хамт явах 1:1 орчуулгын дэмжлэг" },
+        { number: "03", title: "Угтах үйлчилгээ", text: "Нисэх буудлаас эмнэлэг, байр хүртэл тусгай унаа" },
+        { number: "04", title: "Премиум байр", text: "Сэргээн засахад тохирсон премиум байр" },
+        { number: "05", title: "Консьерж", text: "Захиалгаас эхлээд эх орондоо буцах хүртэл VIP үйлчилгээ" },
+      ],
+    },
+    timeline: {
+      title: "Төлөөлөгчийн замнал ба UB MEDI-ийн өсөлт",
+      subtitle: "Туршлага итгэлийг бий болгож, итгэл хамтын аяллыг бүтээнэ",
+      items: [
+        { period: "2005 оны 07 сар", lines: ["LG группийн барилгын салбарт нээлттэй сонгон шалгаруулалтаар ажилд орсон"] },
+        { period: "2006 - 2008", lines: ["Өвлийн олимпийн Alpensia төслийн санхүү, удирдлагын ажил"] },
+        { period: "2010 - 2011", lines: ["UAE Абу Дабигийн төсөлд санхүүгийн чиглэлээр ажилласан"] },
+        { period: "2011 - 2013", lines: ["Бангладеш дахь салбарын удирдлагын ажил"] },
+        { period: "2013 - 2016", lines: ["Турк дэх Financial Manager үүрэг"] },
+        { period: "2016 оны 11 сар", lines: ["Газрын яамны сайдын шагнал", "Турк дахь Солонгос компаниудын татварын үр ашгийг нэмэгдүүлсэн"] },
+        { period: "2017", lines: ["Гадаад өвчтөн татах чиглэлийн UB MEDI-г байгуулсан", "UAE-д Business Manager үүрэг гүйцэтгэсэн"] },
+        { period: "2019", lines: ["Үндэсний эрүүл мэндийн даатгалын Илсан эмнэлэгтэй түншлэл", "Сөүл Асан эмнэлгийн шилдэг түнш", "Сөүл Үндэсний Их Сургуулийн эмнэлгийн шагнал"] },
+        { period: "2022", lines: ["Hotel Grace брэнд хөгжүүлэлт ба entrusted operation хэрэгжүүлсэн"] },
+        { period: "2024", lines: ["STAY-G компанийг байгуулсан", "Инчоны нисэх буудлын Seattle Hotel entrusted operation", "Ашигтай борлуулалтын амжилт", "Cheongpyeong Onestay entrusted operation"] },
+        { period: "2025", lines: ["Сөүл Асан эмнэлгийн шилдэг түншээр дахин шалгарсан", "6 том эмнэлгийн албан ёсны хамтын ажиллагаа", "Ганнамын мэс засал, арьсны эмнэлгийн түншлэл өргөжив"] },
+        { period: "2026", lines: ["Шилдэг түншээр 3 дахь удаагаа шалгарсан", "Нэгдсэн эмнэлгийн аяллын асаргааг удирдах шинэ CEO томилогдсон", "Монгол, Хятадын маркетинг өргөжсөн", "ERP систем нэвтрүүлсэн", "Орчуулга, тосолт, консьерж, байрны нэг цэгийн үйлчилгээ бүрдсэн"] },
+      ],
+    },
+    awards: {
+      title: "Шагнал ба түншлэлийн баталгаа",
+      subtitle: "Солонгосын тэргүүлэх эмнэлгүүдийн сонгосон түнш гэдгийг албан ёсоор нотолно.",
+      cards: [
+        {
+          images: [{ src: "/awards/snuh-award-2022.png", alt: "Seoul National University Hospital award" }],
+          year: "2019",
+          title: "Сөүл Үндэсний Их Сургуулийн Эмнэлэг",
+          subtitle: "Шилдэг өвчтөн таталтын шагнал",
+        },
+        {
+          images: [
+            { src: "/awards/amc-award-2019.jpg", alt: "2019 Asan Medical Center certificate" },
+            { src: "/awards/amc-award-2025.jpg", alt: "2025 Asan Medical Center certificate" },
+            { src: "/awards/amc-award-2026.jpg", alt: "2026 Asan Medical Center certificate" },
+          ],
+          year: "2019 · 2025 · 2026",
+          title: "Сөүл Асан Эмнэлэг",
+          subtitle: "Шилдэг түншээр 3 удаа шалгарсан",
+        },
+      ],
+      partnerGroup: {
+        logos: [
+          { label: "Сөүл Асан Эмнэлэг", logo: "/파트너사로고/서울아산병원.svg" },
+          { label: "Северанс Эмнэлэг", logo: "/파트너사로고/세브란스병원.svg" },
+          { label: "Самсунг Сөүл Эмнэлэг", logo: "/파트너사로고/삼성서울병원.svg" },
+          { label: "Кореа Их Сургуулийн Эмнэлэг", logo: "/파트너사로고/고려대학교의료원.svg" },
+          { label: "Сөүлийн Үндэсний Их Сургуулийн Эмнэлэг", logo: "/파트너사로고/서울대학교병원.svg" },
+          { label: "Католик Их Сургуулийн Гэгээн Марийн Эмнэлэг", logo: "/파트너사로고/성모병원.svg" },
+        ],
+        year: "2025",
+        title: "6 том нэгдсэн эмнэлэг",
+        subtitle: "Гадаад өвчтөн татах хамтын ажиллагааны гэрээ",
+      },
+    },
     hero: {
       badge: "PREMIUM MEDICAL CONCIERGE",
       titleTop: "Нэг сонголтоор бүрдэх",
@@ -731,38 +1035,50 @@ const copies: Record<Locale, Copy> = {
       { label: "Илсан эмнэлэг", logo: "/파트너사로고/일산병원.svg" },
     ],
     specialty: {
-      titlePrefix: "Зорилгод суурилсан",
-      titleAccent: "эмнэлгийн салбарын",
-      titleSuffix: "сонголт",
-      description: "Шинж тэмдэг эсвэл үйлчилгээний нэрээ оруулбал тохирох тасаг руу шууд шилжинэ.",
+      titlePrefix: "Шинж тэмдгээс мэс ажилбар хүртэл,",
+      titleAccent: "зорилгод тохирсон эмчилгээг",
+      titleSuffix: "шууд холбоно",
+      description: "Шилдэг эмч, баталгаатай түнш эмнэлгүүд таны эмчилгээний аяллыг хамт удирдана.",
       searchPlaceholder: "ж: LASIK, нурууны өвдөлт, шүд цоорол, гоо сайхан",
-      selectTitle: "Тасгаа сонгоно уу",
+      selectTitle: "Эмчилгээний чиглэл",
       prev: "Өмнөх",
       next: "Дараах",
       items: [
         {
+          image: "/specialty-surgery.jpg",
+          title: "Хүнд эмчилгээ · Мэс засал",
+          summary: "Хавдар, зүрх, мэдрэл, нуруу зэрэг хүнд өвчний эмчилгээ, мэс заслыг дэлхийн түвшний багтай холбоно.",
+          tags: ["Хавдар", "Зүрх", "Мэдрэл", "Нуруу"],
+        },
+        {
           image: "/건강검진.jpg",
           title: "Эрүүл мэндийн үзлэг",
           summary: "Энгийн үзлэгээс эхлээд премиум иж бүрэн шинжилгээ, хавдрын болон эмэгтэйчүүдийн үзлэгийг зорилгод тань тохируулна.",
-          tags: ["Цус", "Дүрс", "Хэт авиа"],
+          tags: ["Энгийн", "Премиум", "Тусгай"],
         },
         {
           image: "/피부과.jpg",
           title: "Гоо заслын мэс засал",
-          summary: "Нүд, хамар, нүүрний хэлбэрээс эхлээд өөх соруулах, нөхөн сэргээх мэс засал хүртэл Солонгосын шилдэг эмч нартай холбодог.",
+          summary: "Нүд, хамар, нүүрний хэлбэрээс эхлээд өөх шилжүүлэг, цээжний мэс засал хүртэл шилдэг эмч нартай холбоно.",
           tags: ["Нүд", "Хамар", "Хэлбэр"],
+        },
+        {
+          image: "/specialty-ophthalmology.jpg",
+          title: "Нүд",
+          summary: "LASIK, LASEK-аас эхлээд болор, глауком, торлогийн оношилгоо, эмчилгээг нарийн төлөвлөнө.",
+          tags: ["LASIK", "Болор", "Глауком"],
+        },
+        {
+          image: "/정형외과.jpg",
+          title: "Яс, үе",
+          summary: "Үе мөч, нуруу, спортын гэмтэл, сэргээн засах эмчилгээг хөдөлгөөн сэргээх зорилгоор холбоно.",
+          tags: ["Өвдөг", "Нуруу", "Сэргээн засах"],
         },
         {
           image: "/magnific__beigetoned-luxury-hospital-lobby-waiting-area-spac__11816.png",
           title: "Шүд",
           summary: "Шүдний цоорол эмчлэхээс эхлээд ил тод шүд тэгшлэгч, имплант, гоо сайхны эмчилгээг иж бүрнээр дэмжинэ.",
           tags: ["Имплант", "Тэгшлэгч", "Гоо сайхан"],
-        },
-        {
-          image: "/정형외과.jpg",
-          title: "Яс, үе",
-          summary: "Орчин үеийн нарийн оношилгоо, эмчилгээний төлөвлөгөөгөөр булчин, ясны эрсдэлийг эрт удирдана.",
-          tags: ["Өвдөг", "Нуруу", "Сэргээн засах"],
         },
       ],
     },
@@ -982,7 +1298,14 @@ function getStars() {
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("ko");
   const [isLocaleOpen, setIsLocaleOpen] = useState(false);
+  const [specialtyPage, setSpecialtyPage] = useState(0);
   const copy = copies[locale];
+  const specialtyPageStarts = copy.specialty.items.length > 4 ? [0, copy.specialty.items.length - 4] : [0];
+  const currentSpecialtyPage = Math.min(specialtyPage, specialtyPageStarts.length - 1);
+  const visibleSpecialties = copy.specialty.items.slice(
+    specialtyPageStarts[currentSpecialtyPage],
+    specialtyPageStarts[currentSpecialtyPage] + 4,
+  );
 
   return (
     <main className="page-shell">
@@ -993,7 +1316,7 @@ export default function Home() {
           </a>
 
           <nav className="main-nav" aria-label="Main navigation">
-            <a href="#top">{copy.nav.intro}</a>
+            <a href="#intro">{copy.nav.intro}</a>
             <a href="#specialties">{copy.nav.specialties}</a>
             <a href="#process">{copy.nav.guide}</a>
             <a href="#reviews">{copy.nav.reviews}</a>
@@ -1097,35 +1420,180 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section intro-section" id="intro">
+        <div className="intro-backdrop">
+          <Image
+            className="intro-map"
+            src="/intro/intro-map.png"
+            alt="Global medical network map"
+            fill
+            sizes="100vw"
+          />
+        </div>
+        <div className="container intro-inner">
+          <div className="intro-visual intro-visual-left">
+            <Image src="/intro/intro-consulting.png" alt="UB MEDI consultation" fill sizes="180px" />
+          </div>
+
+          <div className="intro-center">
+            <div className="intro-logo-block">
+              <Image src="/UB MEDI LOGO.svg" alt="UB MEDI" width={214} height={86} />
+              <p>
+                {copy.introSection.tagline.replace(" UB MEDI", "")}{" "}
+                <span className="intro-tagline-accent">UB MEDI</span>
+              </p>
+            </div>
+
+            <div className="intro-copy">
+              <h2>
+                {copy.introSection.titleLine1}
+                <br />
+                {locale === "ko" ? (
+                  <>
+                    더 나은 <span className="intro-title-gold">프리미엄</span>{" "}
+                    <span className="intro-title-teal">의료의 동행</span>
+                  </>
+                ) : (
+                  <span className="intro-title-teal">{copy.introSection.titleLine2}</span>
+                )}
+              </h2>
+              <p>
+                {copy.introSection.descriptionLine1}
+                <br />
+                {copy.introSection.descriptionLine2}
+              </p>
+
+              <div className="intro-feature-list">
+                {copy.introSection.features.map((item) => (
+                  <div className="intro-feature-card" key={item.number}>
+                    <span className="intro-feature-number">{item.number}</span>
+                    <span className="intro-feature-title">{item.title}</span>
+                    <span className="intro-feature-divider" aria-hidden>
+                      |
+                    </span>
+                    <span className="intro-feature-text">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="intro-visual intro-visual-right">
+            <Image src="/intro/intro-care.jpg" alt="Premium medical care" fill sizes="180px" />
+          </div>
+        </div>
+      </section>
+
+      <section className="section timeline-section" aria-labelledby="timeline-title">
+        <div className="container narrow timeline-wrap">
+          <div className="timeline-heading">
+            <h2 id="timeline-title">{copy.timeline.title}</h2>
+            <p>{copy.timeline.subtitle}</p>
+          </div>
+
+          <div className="timeline-list">
+            {copy.timeline.items.map((item) => (
+              <article className="timeline-item" key={`${copy.localeLabel}-${item.period}`}>
+                <div className="timeline-period">{item.period}</div>
+                <div className="timeline-marker" aria-hidden>
+                  <span className="timeline-dot" />
+                </div>
+                <div className="timeline-content">
+                  {item.lines.map((line, index) => (
+                    <p key={`${item.period}-${index}`}>{line}</p>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section awards-section" aria-labelledby="awards-title">
+        <div className="container awards-wrap">
+          <div className="awards-heading">
+            <h2 id="awards-title">{copy.awards.title}</h2>
+            <p>{copy.awards.subtitle}</p>
+          </div>
+
+          <div className="awards-grid">
+            {copy.awards.cards.map((card) => (
+              <article className="award-card" key={`${copy.localeLabel}-${card.title}`}>
+                <div className={`award-media-group ${card.images.length > 1 ? "is-cluster" : "is-single"}`}>
+                  {card.images.length > 1 ? (
+                    <>
+                      <div className="award-media-row">
+                        {card.images.slice(0, 2).map((image) => (
+                          <div className="award-media multi" key={image.src}>
+                            <Image src={image.src} alt={image.alt} fill sizes="(max-width: 900px) 50vw, 220px" />
+                          </div>
+                        ))}
+                      </div>
+                      <div className="award-media solo">
+                        <Image src={card.images[2].src} alt={card.images[2].alt} fill sizes="(max-width: 900px) 50vw, 220px" />
+                      </div>
+                    </>
+                  ) : (
+                    <div className="award-media tall">
+                      <Image src={card.images[0].src} alt={card.images[0].alt} fill sizes="(max-width: 900px) 60vw, 240px" />
+                    </div>
+                  )}
+                </div>
+
+                <div className="award-copy">
+                  <p className="award-year">{card.year}</p>
+                  <h3>{card.title}</h3>
+                  <p className="award-subtitle">{card.subtitle}</p>
+                </div>
+              </article>
+            ))}
+
+            <article className="award-card award-card-logos">
+              <div className="award-logo-stack">
+                {copy.awards.partnerGroup.logos.map((logo) => (
+                  <div className="award-logo-item" key={`${copy.localeLabel}-${logo.label}`}>
+                    <div className="award-logo-wrap">
+                      <Image src={logo.logo} alt={logo.label} fill className="award-logo" sizes="240px" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="award-copy">
+                <p className="award-year">{copy.awards.partnerGroup.year}</p>
+                <h3>{copy.awards.partnerGroup.title}</h3>
+                <p className="award-subtitle">{copy.awards.partnerGroup.subtitle}</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section className="section specialty-section" id="specialties">
         <div className="container">
           <div className="specialty-heading">
             <h2>
-              {copy.specialty.titlePrefix} <span>{copy.specialty.titleAccent}</span> {copy.specialty.titleSuffix}
+              {copy.specialty.titlePrefix}
+              <br />
+              <span>{copy.specialty.titleAccent}</span> {copy.specialty.titleSuffix}
             </h2>
             <p>{copy.specialty.description}</p>
-          </div>
-
-          <div className="search-shell specialty-search" aria-label="Search box">
-            <div className="search-prompt">
-              <span className="search-plus" aria-hidden>
-                ✦
-              </span>
-              <span>{copy.specialty.searchPlaceholder}</span>
-            </div>
-            <button type="button" aria-label="Search" className="search-button">
-              ⌕
-            </button>
           </div>
 
           <div className="specialty-list-heading">{copy.specialty.selectTitle}</div>
 
           <div className="specialty-carousel">
-            <button className="carousel-arrow is-left" type="button" aria-label={copy.specialty.prev}>
+            <button
+              className="carousel-arrow is-left"
+              type="button"
+              aria-label={copy.specialty.prev}
+              onClick={() => setSpecialtyPage((prev) => Math.max(prev - 1, 0))}
+              disabled={currentSpecialtyPage === 0}
+            >
               ‹
             </button>
             <div className="card-grid specialty-grid">
-              {copy.specialty.items.map((item) => (
+              {visibleSpecialties.map((item) => (
                 <article className="specialty-card" key={item.title}>
                   <div className="card-media specialty-media">
                     <Image src={item.image} alt={item.title} fill sizes="(max-width: 900px) 100vw, 25vw" />
@@ -1144,7 +1612,13 @@ export default function Home() {
                 </article>
               ))}
             </div>
-            <button className="carousel-arrow is-right" type="button" aria-label={copy.specialty.next}>
+            <button
+              className="carousel-arrow is-right"
+              type="button"
+              aria-label={copy.specialty.next}
+              onClick={() => setSpecialtyPage((prev) => Math.min(prev + 1, specialtyPageStarts.length - 1))}
+              disabled={currentSpecialtyPage === specialtyPageStarts.length - 1}
+            >
               ›
             </button>
           </div>
