@@ -75,7 +75,7 @@ export async function POST(request: Request) {
 
     await transporter.sendMail({
       from: fromAddress,
-      to: "head@ubmedi.com",
+      to: "info@ubmedi.com",
       replyTo: payload.email || undefined,
       subject,
       text,
