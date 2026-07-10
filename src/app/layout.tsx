@@ -7,17 +7,17 @@ export const metadata: Metadata = {
   metadataBase,
   title: "유비메디 UB MEDI | You, Better Medical",
   description:
-    "유비메디(UB MEDI)는 글로벌 환자를 위한 대한민국 프리미엄 메디컬 컨시어지입니다. 서울 주요 대학병원 진료 예약부터 통역, 숙박, 이동까지 원스톱으로 지원합니다.",
+    "유비메디는 해외 환자를 위한 프리미엄 메디컬 컨시어지입니다. 병원 제안, 예약, 통역, 체류 동선, 사후 관리까지 통합 지원합니다.",
   openGraph: {
     title: "유비메디 UB MEDI | You, Better Medical",
     description:
-      "글로벌 환자를 위한 대한민국 프리미엄 메디컬 컨시어지. 병원 예약부터 통역, 숙박까지 유비메디와 함께하세요.",
+      "해외 환자를 위한 한국 의료 컨시어지. 병원 제안부터 통역, 픽업, 체류 동선과 사후 관리까지 유비메디가 함께합니다.",
     images: [
       {
         url: "/ubmedi-social-card.png",
         width: 1200,
         height: 630,
-        alt: "유비메디 UB MEDI | You, Better Medical",
+        alt: "유비메디 UB MEDI",
       },
     ],
   },
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "유비메디 UB MEDI | You, Better Medical",
     description:
-      "글로벌 환자를 위한 대한민국 프리미엄 메디컬 컨시어지. 병원 예약부터 통역, 숙박까지 유비메디와 함께하세요.",
+      "해외 환자를 위한 한국 의료 컨시어지. 병원 제안부터 통역, 픽업, 체류 동선과 사후 관리까지 유비메디가 함께합니다.",
     images: ["/ubmedi-social-card.png"],
   },
   icons: {
